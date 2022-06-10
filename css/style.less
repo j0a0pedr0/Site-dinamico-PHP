@@ -21,6 +21,10 @@
     width:50%;
     padding:0 2%;
 }
+.w33{
+    width:33.3%;
+    padding:0 2%;
+}
 .left{
     float:left;
 }
@@ -157,10 +161,57 @@ section.descricao-autor{
 }/*FIM DO DESCRICAO_AUTOR*/
 
 section.especialidades{
-    padding:40px 0;
-    background-color:gray;
+    padding:40px 0 60px 0;
+    background-color: rgb(221, 217, 217);
     .center{
+        text-align:center;
+        .title{
+            margin-top:15px;
+            font-size:39px;
+            font-weight:400;
+            color:#999;
+        }
+        .box-especialidades{
+            margin-top:48px;
+            h3{
+                &:first-of-type{
+                    color:#404580;
+                    font-size:40px;
+                } 
 
+            }
+            p{
+                margin-top:14px;
+                font-size:15px;
+                color:#444;
+            }
+           
+        }
+    }
+}/*FIM DA ESPECIALIDADES*/
+
+section.extras{
+    padding:30px 0;
+    background:#404580;
+    .center{
+        .depoimentos-container{
+            padding:10px 30px;
+            h3{
+                color:white;
+                font-weight:300;
+                font-size:25px;
+                margin-bottom:15px;
+            }
+        }
+        .servicos-container{
+            padding:10px 30px;
+            h3{
+                color:white;
+                font-weight:300;
+                font-size:25px;
+                margin-bottom:15px;
+            }
+        }
     }
 }
 
@@ -228,7 +279,41 @@ section.especialidades{
     
 }/*MEDIA DE 760px*/
 
+@media screen and (max-width:600px ){
+    section.especialidades{
+        .center{
+            .title{
+                font-size:37px;
+            }
+            .box-especialidades{
+                width:100%;
+                padding:0 3%;
+                h3{
+                    &:first-of-type{
+                        color:#404580;
+                        font-size:40px;
+                    } 
+    
+                }
+                p{
+                    max-width:400px;
+                    margin:10px auto;
+                }
+               
+            }
+        }
+    }
+    
+}
+
 
 @media screen and (max-width: 400px){
-
+    section.especialidades{
+        .center{
+            .title{
+                font-size:27px;
+            }
+        }
+    }
 }
+

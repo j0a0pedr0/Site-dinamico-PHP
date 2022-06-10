@@ -81,9 +81,7 @@
                 <h3>CSS3</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta at felis
                  eu dignissim. Nunc arcu nulla, suscipit at arcu at, condimentum ultrices dolor. Curabi
-                 tur a augue eget elit sagittis ornare sit amet a orci. Aenean mattis dolor purus, nec e
-                 fficitur velit tincidunt nec. Class aptent taciti sociosqu ad litora torquent per conub
-                 ia nostra
+                 tur a 
                 </p>
             </div><!--especialidades-->
 
@@ -92,9 +90,7 @@
                 <h3>HTML5</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta at felis
                  eu dignissim. Nunc arcu nulla, suscipit at arcu at, condimentum ultrices dolor. Curabi
-                 tur a augue eget elit sagittis ornare sit amet a orci. Aenean mattis dolor purus, nec e
-                 fficitur velit tincidunt nec. Class aptent taciti sociosqu ad litora torquent per conub
-                 ia nostra
+                 tur a
                 </p>
             </div><!--especialidades-->
 
@@ -103,9 +99,7 @@
                 <h3>JAVASCRIPT</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta at felis
                  eu dignissim. Nunc arcu nulla, suscipit at arcu at, condimentum ultrices dolor. Curabi
-                 tur a augue eget elit sagittis ornare sit amet a orci. Aenean mattis dolor purus, nec e
-                 fficitur velit tincidunt nec. Class aptent taciti sociosqu ad litora torquent per conub
-                 ia nostra
+                 tur a 
                 </p>
             </div><!--especialidades-->
             <div class="clear"></div>
@@ -114,7 +108,7 @@
 
     <section class="extras">
         <div class="center">
-            <div class="w50 left">
+            <div class="w50 depoimentos-container left">
                 <h3>Depoimentos dos nossos clientes</h3>
                 <div class="depoimento-single">
                     <p class="depoimento-descricao">
@@ -147,7 +141,7 @@
                 </div><!--depoimento-single-->
             </div><!--w50-->
 
-            <div class="w50 left">
+            <div class="w50 servicos-container left">
                 <h3>Serviços</h3>
                 <div class="servicos">
                     <ul>
