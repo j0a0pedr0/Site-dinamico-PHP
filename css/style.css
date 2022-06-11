@@ -57,6 +57,9 @@ header nav.desktop ul li a {
   font-size: 14px;
   font-weight: 200;
 }
+header nav.desktop ul li:hover {
+  transform: scale(1.2, 1.2);
+}
 header nav.mobile {
   display: none;
 }
@@ -187,6 +190,21 @@ section.extras .center .depoimentos-container h3 {
   font-size: 25px;
   margin-bottom: 15px;
 }
+section.extras .center .depoimentos-container .depoimento-single {
+  padding: 10px 10px;
+  border-bottom: 2px solid #2b1875;
+}
+section.extras .center .depoimentos-container .depoimento-single p.depoimento-descricao {
+  font-size: 15px;
+  color: #cfcfcf;
+  font-weight: 200;
+}
+section.extras .center .depoimentos-container .depoimento-single p.nome-autor {
+  margin-top: 12px;
+  font-size: 15px;
+  color: white;
+  font-weight: bold;
+}
 section.extras .center .servicos-container {
   padding: 10px 30px;
 }
@@ -195,6 +213,24 @@ section.extras .center .servicos-container h3 {
   font-weight: 300;
   font-size: 25px;
   margin-bottom: 15px;
+}
+section.extras .center .servicos-container .servicos ul {
+  list-style-position: inside;
+  padding: 45px 15px 15px 15px;
+}
+section.extras .center .servicos-container .servicos ul li {
+  margin-top: 25px;
+  color: aliceblue;
+}
+footer {
+  padding: 30px 0;
+  background: #313462;
+}
+footer .center p {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
 }
 @media screen and (max-width: 768px) {
   header {
@@ -210,6 +246,7 @@ section.extras .center .servicos-container h3 {
     cursor: pointer;
     font-size: 18px;
     color: white;
+    z-index: 5;
   }
   header nav.mobile ul {
     background-color: #555eb1;
@@ -217,16 +254,21 @@ section.extras .center .servicos-container h3 {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 47px;
+    top: 0px;
     z-index: 3;
     list-style-type: none;
   }
   header nav.mobile ul li {
+    padding: 14px 0px;
     text-align: center;
     border-bottom: 2px solid #2b2f55;
+    border-left: 2px solid #2b2f55;
+    border-right: 2px solid #2b2f55;
   }
   header nav.mobile ul li:first-child {
     border-top: 2px solid #2b2f55;
+    border-left: 2px solid #2b2f55;
+    border-right: 2px solid #2b2f55;
   }
   header nav.mobile ul li a {
     font-size: 19px;
@@ -247,6 +289,30 @@ section.extras .center .servicos-container h3 {
     height: 350px;
     margin-top: 40px;
   }
+  /*DESCRICAO-AUTOR*/
+  section.extras {
+    padding: 30px 0;
+    background: #404580;
+  }
+  section.extras .center .w50 {
+    width: 100% !important;
+  }
+  section.extras .center .depoimentos-container {
+    padding: 10px 10px;
+  }
+  section.extras .center .servicos-container {
+    padding: 10px 10px;
+  }
+  section.extras .center .servicos-container h3 {
+    margin-bottom: 8px;
+  }
+  section.extras .center .servicos-container .servicos ul {
+    padding: 15px 15px 15px 15px;
+  }
+  section.extras .center .servicos-container .servicos ul li {
+    margin-top: 20px;
+  }
+  /*EXTRAS*/
 }
 /*MEDIA DE 760px*/
 @media screen and (max-width: 600px) {

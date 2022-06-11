@@ -1,3 +1,6 @@
+
+<?php include('config.php');?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -9,33 +12,36 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="fontawesome-free-6.1.1-web/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="<?php echo INCLUDE_PATH; ?>fontawesome-free-6.1.1-web/css/all.min.css">
+    <link rel="stylesheet" href="<?php echo INCLUDE_PATH; ?>js/funcoes-mobile/style.css">
+    <link rel="stylesheet" href="<?php echo INCLUDE_PATH; ?>css/style.css">
     <meta>
     <title>Site-dinamico</title>
 </head>
 <body>
-    
+
     <header>
         <div class="center">
             <div class="logo left">JP-CODE</div>
             <nav class="desktop right">  
                 <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Sobre</a></li>
-                    <li><a href="">Serviços</a></li>
-                    <li><a href="">Contato</a></li>
+                    <li><a href="<?php echo INCLUDE_PATH; ?>">Home</a></li>
+                    <li><a href="<?php echo INCLUDE_PATH; ?>sobre">Sobre</a></li>
+                    <li><a href="<?php echo INCLUDE_PATH; ?>servicos">Serviços</a></li>
+                    <li><a href="<?php echo INCLUDE_PATH; ?>contato">Contato</a></li>
                 </ul>
             </nav><!--DESKTOP-->
 
             <nav class="mobile right">  
-                <div class="botao-mobile"><i class="fa-solid fa-bars-staggered"></i></div>
+                <div onclick="Menu_click()"  id="icone" class="botao-mobile"><i class="fa-solid fa-bars-staggered"></i></div>
+                <div id="mobile-menu" class="mobile-menu hide">
                 <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Sobre</a></li>
-                    <li><a href="">Serviços</a></li>
-                    <li><a href="">Contato</a></li>
+                    <li><a href="<?php echo INCLUDE_PATH; ?>">Home</a></li>
+                    <li><a href="<?php echo INCLUDE_PATH; ?>sobre">Sobre</a></li>
+                    <li><a href="<?php echo INCLUDE_PATH; ?>servicos">Serviços</a></li>
+                    <li><a href="<?php echo INCLUDE_PATH; ?>contato">Contato</a></li>
                 </ul>
+                </div><!--mobile-menu-->
             </nav><!--MOBILE-->
             <div class="clear"></div>
         </div><!--center-->
@@ -162,5 +168,9 @@
         </div><!--center-->
     </footer>
 
+<script src="<?php echo INCLUDE_PATH; ?>js/jquery.js"></script>
+<script src="<?php echo INCLUDE_PATH; ?>js/jquery-migrate-1.4.1.min.js" type="text/javascript"></script>
+<script src="<?php echo INCLUDE_PATH; ?>js/jquery-migrate-3.3.2.min.js" type="text/javascript"></script>
+<script src="<?php echo INCLUDE_PATH; ?>js/funcoes-mobile/Menu-mobile.js"></script>
 </body>
 </html>

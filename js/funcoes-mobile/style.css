@@ -1,0 +1,22 @@
+.hide{
+    height:0px !important;
+    width:100%;
+    transition: 0.5s;
+}
+
+.show{
+    height:390px;
+    transition: 1s;
+    width:100% !important;
+}
+
+
+.mobile-menu{
+    overflow: hidden;
+    position:absolute;
+    top:50px;
+    width:96% !important;
+    left:2%;
+
+}
+
