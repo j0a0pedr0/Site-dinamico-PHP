@@ -43,6 +43,11 @@ header .logo {
   text-transform: uppercase;
   font-weight: 200;
 }
+header .logo a {
+  text-decoration: none;
+  color: white;
+  font-size: 23px;
+}
 header nav.desktop ul {
   list-style-type: none;
 }
@@ -64,39 +69,47 @@ header nav.mobile {
   display: none;
 }
 /*FIM DO HEADER*/
-section.banner-principal {
+section.banner-container {
   position: relative;
   width: 100%;
   height: 600px;
-  background-image: url('../image/banner-principal.jpg');
-  background-size: cover;
-  background-position: center;
 }
-section.banner-principal .overlay {
+section.banner-container .banner-single {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-position: center;
+  background-size: cover;
+}
+section.banner-container .overlay {
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(105, 105, 105, 0.7);
-  z-index: 1;
+  z-index: 2;
 }
-section.banner-principal .center form {
+section.banner-container .center form {
   width: 95%;
   max-width: 600px;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  z-index: 2;
+  z-index: 3;
 }
-section.banner-principal .center form h2 {
+section.banner-container .center form h2 {
+  position: relative;
   color: white;
   font-weight: 300;
   font-size: 30px;
   text-align: center;
 }
-section.banner-principal .center form input[type=email] {
+section.banner-container .center form input[type=email] {
   width: 100%;
   height: 66px;
   background-color: white;
@@ -108,14 +121,14 @@ section.banner-principal .center form input[type=email] {
   margin-top: 15px;
   opacity: 0.7;
 }
-section.banner-principal .center form input[type=email]:hover {
+section.banner-container .center form input[type=email]:hover {
   opacity: 1;
 }
-section.banner-principal .center form input[type=email]:focus {
+section.banner-container .center form input[type=email]:focus {
   outline: none;
   opacity: 1;
 }
-section.banner-principal .center form input[type=submit] {
+section.banner-container .center form input[type=submit] {
   width: 100%;
   height: 66px;
   margin-top: 10px;
@@ -127,8 +140,28 @@ section.banner-principal .center form input[type=submit] {
   font-size: 22px;
   opacity: 0.7;
 }
-section.banner-principal .center form input[type=submit]:hover {
+section.banner-container .center form input[type=submit]:hover {
   opacity: 1;
+}
+section.banner-container .center .bullets {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+section.banner-container .center .bullets .active-slider {
+  background-color: #9ba2df;
+  transition: 1s;
+}
+section.banner-container .center .bullets span {
+  margin: 0 7px;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: #292f63;
 }
 /*FIM DO BANNER_PRINCIPAL*/
 section.descricao-autor {
@@ -232,6 +265,77 @@ footer .center p {
   font-weight: bold;
   font-size: 15px;
 }
+/*PAGINA DE ERRO*/
+section.erro-404 .center {
+  text-align: center;
+  padding-top: 300px;
+}
+section.erro-404 .center h2 {
+  font-size: 50px;
+}
+section.erro-404 .center p {
+  font-size: 18px;
+  margin-top: 22px !important;
+}
+section.erro-404 .center a {
+  color: #4232d6;
+}
+footer.fixed {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+/*FIM DA PAGINA ERROR*/
+/*Pagina contato*/
+#map {
+  width: 70%;
+  margin: 90px auto 0px auto;
+  height: 400px;
+}
+.container-contato {
+  text-align: center;
+  padding: 60px 3% 20px 3%;
+}
+.container-contato form {
+  max-width: 650px;
+  margin: 0 auto;
+}
+.container-contato form input[type=text],
+.container-contato form input[type=email],
+.container-contato form input[type=number] {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #ccc;
+  padding-left: 8px;
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 10px;
+}
+.container-contato form input[type=text]:focus,
+.container-contato form input[type=email]:focus,
+.container-contato form input[type=number]:focus {
+  outline: none;
+}
+.container-contato form input[type=submit] {
+  width: 100px;
+  height: 40px;
+  padding: 7px 10px;
+  margin: 15px auto;
+  border-radius: 10px;
+  background-color: #555eb1;
+  color: white;
+  cursor: pointer;
+}
+.container-contato form textarea {
+  padding: 8px;
+  width: 100%;
+  height: 100px;
+  resize: vertical;
+}
+.container-contato form textarea:focus {
+  outline: none;
+}
+/*FIM DA PAGINA CONTATO*/
 @media screen and (max-width: 768px) {
   header {
     padding: 13px 14px;
@@ -255,7 +359,7 @@ footer .center p {
     left: 50%;
     transform: translateX(-50%);
     top: 0px;
-    z-index: 3;
+    z-index: 4;
     list-style-type: none;
   }
   header nav.mobile ul li {
@@ -330,6 +434,20 @@ footer .center p {
   section.especialidades .center .box-especialidades p {
     max-width: 400px;
     margin: 10px auto;
+  }
+  section.erro-404 .center {
+    text-align: center;
+    padding-top: 300px;
+  }
+  section.erro-404 .center h2 {
+    font-size: 24px;
+  }
+  section.erro-404 .center p {
+    font-size: 18px;
+    margin-top: 22px !important;
+  }
+  section.erro-404 .center a {
+    color: #4232d6;
   }
 }
 @media screen and (max-width: 400px) {

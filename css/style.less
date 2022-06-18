@@ -45,6 +45,11 @@ header{
         color:white;
         text-transform:uppercase;
         font-weight:200;
+        a{
+            text-decoration: none;
+            color:white;
+            font-size:23px;
+        }
     }
 
     nav.desktop{
@@ -72,13 +77,20 @@ header{
     
 }/*FIM DO HEADER*/
 
-section.banner-principal{
+section.banner-container{
     position:relative;
     width:100%;
     height:600px;
-    background-image:url('../image/banner-principal.jpg');
-    background-size:cover;
-    background-position:center;
+    .banner-single{
+        position:absolute;
+        left:0;
+        top:0;
+        width:100%;
+        height:100%;
+        z-index:1;
+        background-position:center;
+        background-size:cover;
+    }
     .overlay{
         position:absolute;
         left:0;
@@ -86,7 +98,7 @@ section.banner-principal{
         width:100%;
         height:100%;
         background-color: rgba(105, 105, 105, 0.7);
-        z-index:1;
+        z-index:2;
     }
     .center{
         form{
@@ -96,8 +108,10 @@ section.banner-principal{
             left:50%;
             top:50%;
             transform:translate(-50%,-50%);
-            z-index:2;
+            z-index:3;
             h2{
+
+                position: relative;
                 color:white;
                 font-weight:300;
                 font-size:30px;
@@ -138,6 +152,27 @@ section.banner-principal{
                 }
             }
         }
+        .bullets{
+            position:absolute;
+            top:90%;
+            left:50%;
+            transform: translateX(-50%);
+            z-index:5;
+            .active-slider{
+                background-color: #9ba2df;
+                transition: 1s;
+            }
+            span{
+                margin:0 7px;
+                display:inline-block;
+                width:15px;
+                height:15px;
+                border-radius:50%;
+                cursor:pointer;
+                background-color:#292f63;
+            }
+        }
+        
     }
 }/*FIM DO BANNER_PRINCIPAL*/
 
@@ -257,6 +292,79 @@ footer{
     }
 }
 
+/*PAGINA DE ERRO*/
+section.erro-404{
+    .center{
+        text-align:center;
+        padding-top:300px;
+        h2{
+            font-size:50px;
+        }
+        p{
+            font-size:18px;
+            margin-top:22px !important;
+        }
+        a{
+            color:rgb(66, 50, 214);
+           
+        }
+    }
+}
+footer.fixed{
+    position:absolute;
+    bottom:0;
+    width:100%;
+}/*FIM DA PAGINA ERROR*/
+
+/*Pagina contato*/
+#map{
+    width:70%;
+    margin:90px auto 0px auto;
+    height:400px;
+}
+
+.container-contato{
+    text-align:center;
+    padding:60px 3% 20px 3%;
+    form{
+        max-width:650px;
+        margin:0 auto;
+        input[type=text],
+        input[type=email],
+        input[type=number]{
+            width:100%;
+            height:40px;
+            border:1px solid #ccc;
+            padding-left:8px;
+            font-size:15px;
+            color:#444;
+            margin-bottom:10px;
+            &:focus{
+                outline:none;
+            }
+        }
+        input[type=submit]{
+            width:100px;
+            height:40px;
+            padding:7px 10px;
+            margin:15px auto;
+            border-radius:10px;
+            background-color: #555eb1;
+            color:white;
+            cursor:pointer;
+        }
+        textarea{
+            padding:8px;
+            width:100%;
+            height:100px;
+            resize:vertical;
+            &:focus{
+                outline:none;
+            }
+        }
+    }
+}
+/*FIM DA PAGINA CONTATO*/
 @media screen and (max-width:768px ){
 
     header{
@@ -266,6 +374,7 @@ footer{
         }
         nav.mobile{
             display:block;
+
             .botao-mobile{
                 cursor:pointer;
                 font-size:18px;
@@ -279,7 +388,7 @@ footer{
                 left:50%;
                 transform: translateX(-50%);
                 top:0px;
-                z-index:3;
+                z-index:4;
                 list-style-type:none;
                 
                 li{
@@ -374,6 +483,24 @@ footer{
                     max-width:400px;
                     margin:10px auto;
                 }
+               
+            }
+        }
+    }
+
+    section.erro-404{
+        .center{
+            text-align:center;
+            padding-top:300px;
+            h2{
+                font-size:24px;
+            }
+            p{
+                font-size:18px;
+                margin-top:22px !important;
+            }
+            a{
+                color:rgb(66, 50, 214);
                
             }
         }

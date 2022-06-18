@@ -19,16 +19,29 @@
     <title>Site-dinamico</title>
 </head>
 <body>
+    <base base="<?php echo INCLUDE_PATH ?>"/>
+    <?php        
+        $url = isset($_GET['url']) ? $_GET['url'] : 'home';
+        switch ($url) {
+            case 'sobre':
+                echo '<target target="sobre" />';
+                break;
+            
+            case'servicos':
+                echo '<target target="servicos" />';
+                break;
+        }
+    ?>
 
     <header>
         <div class="center">
-            <div class="logo left">JP-CODE</div>
+            <div class="logo left"><a href="<?php echo INCLUDE_PATH; ?>contato">JP-CODE</a></div>
             <nav class="desktop right">  
                 <ul>
                     <li><a href="<?php echo INCLUDE_PATH; ?>">Home</a></li>
                     <li><a href="<?php echo INCLUDE_PATH; ?>sobre">Sobre</a></li>
                     <li><a href="<?php echo INCLUDE_PATH; ?>servicos">Serviços</a></li>
-                    <li><a href="<?php echo INCLUDE_PATH; ?>contato">Contato</a></li>
+                    <li><a realtime="contato" href="<?php echo INCLUDE_PATH; ?>contato">Contato</a></li>
                 </ul>
             </nav><!--DESKTOP-->
 
@@ -39,7 +52,7 @@
                     <li><a href="<?php echo INCLUDE_PATH; ?>">Home</a></li>
                     <li><a href="<?php echo INCLUDE_PATH; ?>sobre">Sobre</a></li>
                     <li><a href="<?php echo INCLUDE_PATH; ?>servicos">Serviços</a></li>
-                    <li><a href="<?php echo INCLUDE_PATH; ?>contato">Contato</a></li>
+                    <li><a realtime="contato" href="<?php echo INCLUDE_PATH; ?>contato">Contato</a></li>
                 </ul>
                 </div><!--mobile-menu-->
             </nav><!--MOBILE-->
@@ -47,122 +60,24 @@
         </div><!--center-->
     </header>
 
-    <section class="banner-principal">
-        <div class="overlay"></div>
-        <div class="center">
-            <form>
-                <h2>Qual o seu melhor e-mail?</h2>
-                <input type="email" name="email" required>
-                <input type="submit" value="Enviar" name="acao">
-            </form>
-        </div><!--center-->
-    </section><!--BANNER_PRINCIPAL-->
+    <div class="container-principal">
+        <?php
 
-    <section class="descricao-autor">
-        <div class="center">
-            <div class="w50 descricao-autor-box left">
-                <h2>Joao Pedro Alves</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta at felis eu dignissim.
-                Nunc arcu nulla, suscipit at arcu at, condimentum ultrices dolor. Curabitur a augue eget elit s
-                agittis ornare sit amet a orci. Aenean mattis dolor purus, nec efficitur velit tincidunt nec. 
-                </p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta at felis eu dignis
-                sim. Nunc arcu nulla, suscipit at arcu at, condimentum ultrices dolor. Curabitur a augue ege
-                t elit sagittis ornare sit amet a orci. Aenean mattis dolor purus, nec efficitur velit tincid
-                    s.
-                </p>
-            </div><!--W50-->
-            <div class="w50 left">
-                <img class="center-x" src="image/autor.jpg"/>
-            </div><!--W50-->
-            <div class="clear"></div>
-        </div><!--center-->
-    </section><!--Descricao-autor-->
+            if(file_exists('pages/'.$url.'.php')){
+                include('pages/'.$url.'.php');
+            }else{
+                if($url != 'sobre' && $url != 'servicos'){
+                $pagina404 = true;
+                include('pages/404.php');
+                }else{
+                    include('pages/home.php');
+                }
+            }
 
-    <section class="especialidades">
-        <div class="center">
-        <h2 class="title">Especialidades</h2>
-            <div class=" w33 left box-especialidades">
-                <h3><i class="fa-brands fa-css3-alt"></i></h3>
-                <h3>CSS3</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta at felis
-                 eu dignissim. Nunc arcu nulla, suscipit at arcu at, condimentum ultrices dolor. Curabi
-                 tur a 
-                </p>
-            </div><!--especialidades-->
+        ?>
+    </div><!--container-principal-->
 
-            <div class="w33 left box-especialidades">
-                <h3><i class="fa-brands fa-html5"></i></h3>
-                <h3>HTML5</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta at felis
-                 eu dignissim. Nunc arcu nulla, suscipit at arcu at, condimentum ultrices dolor. Curabi
-                 tur a
-                </p>
-            </div><!--especialidades-->
-
-            <div class="w33 left box-especialidades">
-                <h3><i class="fa-brands fa-js"></i></h3>
-                <h3>JAVASCRIPT</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta at felis
-                 eu dignissim. Nunc arcu nulla, suscipit at arcu at, condimentum ultrices dolor. Curabi
-                 tur a 
-                </p>
-            </div><!--especialidades-->
-            <div class="clear"></div>
-        </div><!--CENTER-->
-    </section><!--especialiadades-->
-
-    <section class="extras">
-        <div class="center">
-            <div class="w50 depoimentos-container left">
-                <h3>Depoimentos dos nossos clientes</h3>
-                <div class="depoimento-single">
-                    <p class="depoimento-descricao">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta at felis eu dignissim.
-                     Nunc arcu nulla, suscipit at arcu at, condimentum ultrices dolor. Curabitur a augue eget elit sagi
-                     ttis ornare sit amet a orci. Aenean mattis dolor purus, nec efficitur velit tincidunt nec. Class ap
-                     tent taciti sociosqu ad litora torquent per conubia nostra,
-                    </p>
-                    <p class="nome-autor">Lorem Ipsum</p>
-                </div><!--depoimento-single-->
-
-                <div class="depoimento-single">
-                    <p class="depoimento-descricao">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta at felis eu dignissim.
-                     Nunc arcu nulla, suscipit at arcu at, condimentum ultrices dolor. Curabitur a augue eget elit sagi
-                     ttis ornare sit amet a orci. Aenean mattis dolor purus, nec efficitur velit tincidunt nec. Class ap
-                     tent taciti sociosqu ad litora torquent per conubia nostra,
-                    </p>
-                    <p class="nome-autor">Lorem Ipsum</p>
-                </div><!--depoimento-single-->
-
-                <div class="depoimento-single">
-                    <p class="depoimento-descricao">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta at felis eu dignissim.
-                     Nunc arcu nulla, suscipit at arcu at, condimentum ultrices dolor. Curabitur a augue eget elit sagi
-                     ttis ornare sit amet a orci. Aenean mattis dolor purus, nec efficitur velit tincidunt nec. Class ap
-                     tent taciti sociosqu ad litora torquent per conubia nostra,
-                    </p>
-                    <p class="nome-autor">Lorem Ipsum</p>
-                </div><!--depoimento-single-->
-            </div><!--w50-->
-
-            <div class="w50 servicos-container left">
-                <h3>Serviços</h3>
-                <div class="servicos">
-                    <ul>
-                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta at felis eu dignissim. Nunc arcu nulla, suscipit at arcu at, condimentum ultrices dolor. Curabitur a</li>
-                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta at felis eu dignissim. Nunc arcu nulla, suscipit at arcu at, condimentum ultrices dolor. Curabitur a</li>
-                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta at felis eu dignissim. Nunc arcu nulla, suscipit at arcu at, condimentum ultrices dolor. Curabitur a</li>
-                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta at felis eu dignissim. Nunc arcu nulla, suscipit at arcu at, condimentum ultrices dolor. Curabitur a</li>
-                    </ul>
-                </div><!--servicos-->
-            </div><!--w50-->
-            <div class="clear"></div>
-        </div><!--center-->
-    </section><!--Extras-->
-
-    <footer>
+    <footer <?php if(isset($pagina404) && $pagina404 == true) echo 'class="fixed";' ?>>
         <div class="center">
             <p>Todos os direitos reservados</p>
         </div><!--center-->
@@ -172,5 +87,26 @@
 <script src="<?php echo INCLUDE_PATH; ?>js/jquery-migrate-1.4.1.min.js" type="text/javascript"></script>
 <script src="<?php echo INCLUDE_PATH; ?>js/jquery-migrate-3.3.2.min.js" type="text/javascript"></script>
 <script src="<?php echo INCLUDE_PATH; ?>js/funcoes-mobile/Menu-mobile.js"></script>
+<script src="<?php echo INCLUDE_PATH; ?>js/constants.js"></script>
+<script src="<?php echo INCLUDE_PATH; ?>js/exemplo.js"></script>
+<script src="<?php echo INCLUDE_PATH; ?>js/scripts.js"></script>
+<script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDHPNQxozOzQSZ-djvWGOBUsHkBUoT_qH4'></script>
+<script src="<?php echo INCLUDE_PATH; ?>js/Map.js"></script>
+
+<?php
+if($url == 'contato'){
+?>
+
+
+<?php } ?>
+
+
+<?php
+    if($url == 'home' || $url = ''){
+?>
+
+<script src="<?php echo INCLUDE_PATH; ?>js/slider.js"></script>
+<?php }?>
+
 </body>
 </html>
