@@ -19,6 +19,55 @@
     <title>Site-dinamico</title>
 </head>
 <body>
+    <?php 
+        if(isset($_POST['acao']) && $_POST['identificador'] == 'form_homsde'){
+            //Enviei o formulário. 
+            if($_POST['email'] != ''){
+                $email = $_POST['email'];
+                if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+                    //Tudo certo,é um email.
+                    //Só enviar.
+                    $mail = new Email('smtp.hostinger.com','exemplo@cursospoderfeminino.com','Jaca1000$','Joao');
+                    $mail->addAddress('exemplo@cursospoderfeminino.com','euMesmo');
+                    $corpo = "E-mail cadastrado na home do site: <hr> $email";
+                    $info = array('assunto'=>'Um novo email cadastrado no site!','corpo'=>$corpo);
+                    $mail->formatarEmail($info);
+                    if($mail->enviarEmail()){
+                        echo '<script>alert("Enviado com sucesso!")</script>';
+                    }else{
+                        echo '<script>alert("Algo deu errado!")</script>';
+                    }
+                }else{
+                    echo '<script>alert("Campos vazios náo são permitidos!")</script>';
+                }
+            }else{
+                echo '<script>alert("Campos vazios náo são permitidos!")</script>';
+            }
+        }else if(isset($_POST['acao']) && $_POST['identificador'] == 'form_contato'){
+            /*$nome = $_POST['nome'];
+            $email = $_POST['email'];
+            $telefone = $_POST['telefone'];
+            $mensagem = $_POST['mensagem'];*/
+            $assunto = 'Nova Mensagem do site!';
+            $corpo = '';
+
+            foreach($_POST as $key => $value) {
+                $corpo.= ucfirst($key).": ".$value."<hr>";
+                
+            }
+            $info = array('assunto'=>$assunto,'corpo'=>$corpo);
+            $mail = new Email('smtp.hostinger.com','exemplo@cursospoderfeminino.com','Jaca1000$','Joao');
+            $mail->addAddress('exemplo@cursospoderfeminino.com','euMesmo');
+            $mail->formatarEmail($info);
+            if($mail->enviarEmail()){
+                echo '<script>alert("Enviado com sucesso!")</script>';
+            }else{
+                echo '<script>alert("Algo deu errado!")</script>';
+            }
+        }
+
+    ?>
+
     <base base="<?php echo INCLUDE_PATH ?>"/>
     <?php        
         $url = isset($_GET['url']) ? $_GET['url'] : 'home';
@@ -32,6 +81,11 @@
                 break;
         }
     ?>
+
+    <?php error_reporting(E_ALL);
+ini_set('display_errors', 'On') ?>
+
+  
 
     <header>
         <div class="center">
@@ -92,6 +146,8 @@
 <script src="<?php echo INCLUDE_PATH; ?>js/scripts.js"></script>
 <script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDHPNQxozOzQSZ-djvWGOBUsHkBUoT_qH4'></script>
 <script src="<?php echo INCLUDE_PATH; ?>js/Map.js"></script>
+<script src="<?php echo INCLUDE_PATH; ?>js/slider.js"></script>
+<script src="<?php echo INCLUDE_PATH; ?>js/formularios.js"></script>
 
 <?php
 if($url == 'contato'){
@@ -105,8 +161,9 @@ if($url == 'contato'){
     if($url == 'home' || $url = ''){
 ?>
 
-<script src="<?php echo INCLUDE_PATH; ?>js/slider.js"></script>
+
 <?php }?>
+
 
 </body>
 </html>

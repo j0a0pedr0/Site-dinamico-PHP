@@ -2,13 +2,15 @@
     <div style="background-image: url('<?php echo INCLUDE_PATH; ?>image/banner-2.jpg');" class="banner-single"></div><!--BANNER_SINGLE-->
     <div style="background-image: url('<?php echo INCLUDE_PATH; ?>image/banner-3.jpg');"  class="banner-single"></div><!--BANNER_SINGLE-->
     <div style="background-image: url('<?php echo INCLUDE_PATH; ?>image/banner-principal.jpg');"  class="banner-single"></div><!--BANNER_SINGLE-->
+
         <div class="overlay"></div>
         <div class="center">
 
-            <form>
+            <form method="post">
                 <h2>Qual o seu melhor e-mail?</h2>
-                <input type="email" name="email" required>
-                <input type="submit" value="Enviar" name="acao">
+                <input type="email" name="email" required />
+                <input type="hidden" name="identificador" value="form_homsde"/>
+                <input type="submit" value="Enviar" name="acao"/>
             </form>
 
             <div class="bullets">
