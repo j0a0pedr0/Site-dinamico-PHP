@@ -8,7 +8,7 @@
         }
         $classa = 'Email';
 
-        include('./classes/'.$classa.'.php');
+        include('./classes/'.$class.'.php');
 
     };
 
@@ -16,8 +16,9 @@
 
     define('INCLUDE_PATH','http://localhost/criando_site_dinamico/');
 
-
+    
     define('INCLUDE_PATH_PAINEL',INCLUDE_PATH.'painel/');
+
     //Conectar com o banco de dados
     define('HOST','localhost');
     define('USER','root');
