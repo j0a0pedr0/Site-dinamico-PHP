@@ -6,11 +6,11 @@
         if($class == 'Email'){
             require_once('./classes/vendor/autoload.php');
         }
-        $classa = 'Email';
-
         include('./classes/'.$class.'.php');
-
     };
+
+   
+  
 
     spl_autoload_register($autoload);
 
