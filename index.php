@@ -1,5 +1,14 @@
 
 <?php include('config.php');?>
+<?php include('./classes/Site.php'); ?>
+<?php include('./classes/MySql.php') ?>
+<?php SITE::updateUsuarioOnline(); ?>
+<?php SITE::contador(); ?>
+<?php 
+    $infoSite = Mysql::Conectar()->prepare("SELECT * FROM `tb_site.config`");
+    $infoSite->execute();
+    $infoSite = $infoSite->fetch();
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -16,7 +25,7 @@
     <link rel="stylesheet" href="<?php echo INCLUDE_PATH; ?>js/funcoes-mobile/style.css">
     <link rel="stylesheet" href="<?php echo INCLUDE_PATH; ?>css/style.css">
     <meta>
-    <title>Site-dinamico</title>
+    <title><?php echo $infoSite['titulo']; ?></title>
 </head>
 <body>
     <base base="<?php echo INCLUDE_PATH ?>"/>
@@ -45,7 +54,7 @@ ini_set('display_errors', 'On') ?>
 
     <header>
         <div class="center">
-            <div class="logo left"><a href="<?php echo INCLUDE_PATH; ?>contato">JP-CODE</a></div>
+            <div class="logo left"><a href="<?php echo INCLUDE_PATH; ?>">JP-CODE</a></div>
             <nav class="desktop right">  
                 <ul>
                     <li><a href="<?php echo INCLUDE_PATH; ?>">Home</a></li>

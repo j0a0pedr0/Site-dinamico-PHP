@@ -1,8 +1,10 @@
 <section class="banner-container">
-    <div style="background-image: url('<?php echo INCLUDE_PATH; ?>image/banner-2.jpg');" class="banner-single"></div><!--BANNER_SINGLE-->
-    <div style="background-image: url('<?php echo INCLUDE_PATH; ?>image/banner-3.jpg');"  class="banner-single"></div><!--BANNER_SINGLE-->
-    <div style="background-image: url('<?php echo INCLUDE_PATH; ?>image/banner-principal.jpg');"  class="banner-single"></div><!--BANNER_SINGLE-->
+    <?php $slide = Painel::selectAll('tb_site.slides'); ?>
+    <?php foreach($slide as $key =>$value){
 
+        ?>
+        <div style="background-image: url('<?php echo INCLUDE_PATH_PAINEL; ?>uploads/<?php echo $value['slide']; ?>');" class="banner-single"></div><!--BANNER_SINGLE-->
+    <?php }?>
         <div class="overlay"></div>
         <div class="center">
 
@@ -22,16 +24,8 @@
     <section class="descricao-autor">
         <div class="center">
             <div class="w50 descricao-autor-box left">
-                <h2>Joao Pedro Alves</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta at felis eu dignissim.
-                Nunc arcu nulla, suscipit at arcu at, condimentum ultrices dolor. Curabitur a augue eget elit s
-                agittis ornare sit amet a orci. Aenean mattis dolor purus, nec efficitur velit tincidunt nec. 
-                </p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta at felis eu dignis
-                sim. Nunc arcu nulla, suscipit at arcu at, condimentum ultrices dolor. Curabitur a augue ege
-                t elit sagittis ornare sit amet a orci. Aenean mattis dolor purus, nec efficitur velit tincid
-                    s.
-                </p>
+                <h2><?php echo $infoSite['nome_autor']; ?></h2>
+                <p><?php echo $infoSite['descricao']; ?></p>
             </div><!--W50-->
             <div class="w50 left">
                 <img class="center-x" src="image/autor.jpg"/>
@@ -44,30 +38,21 @@
         <div class="center">
         <h2 class="title">Especialidades</h2>
             <div class=" w33 left box-especialidades">
-                <h3><i class="fa-brands fa-css3-alt"></i></h3>
+                <h3><i class="<?php echo $infoSite['icone1']; ?>"></i></h3>
                 <h3>CSS3</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta at felis
-                 eu dignissim. Nunc arcu nulla, suscipit at arcu at, condimentum ultrices dolor. Curabi
-                 tur a 
-                </p>
+                <p><?php echo $infoSite['descricao1']; ?></p>
             </div><!--especialidades-->
 
             <div class="w33 left box-especialidades">
-                <h3><i class="fa-brands fa-html5"></i></h3>
+                <h3><i class="<?php echo $infoSite['icone2']; ?>"></i></h3>
                 <h3>HTML5</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta at felis
-                 eu dignissim. Nunc arcu nulla, suscipit at arcu at, condimentum ultrices dolor. Curabi
-                 tur a
-                </p>
+                <p><?php echo $infoSite['descricao2']; ?></p>
             </div><!--especialidades-->
 
             <div class="w33 left box-especialidades">
-                <h3><i class="fa-brands fa-js"></i></h3>
+                <h3><i class="<?php echo $infoSite['icone3']; ?>"></i></h3>
                 <h3>JAVASCRIPT</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta at felis
-                 eu dignissim. Nunc arcu nulla, suscipit at arcu at, condimentum ultrices dolor. Curabi
-                 tur a 
-                </p>
+                <p><?php echo $infoSite['descricao3']; ?></p>
             </div><!--especialidades-->
             <div class="clear"></div>
         </div><!--CENTER-->
@@ -77,45 +62,36 @@
         <div class="center">
             <div id="sobre" class="w50 depoimentos-container left">
                 <h3>Depoimentos dos nossos clientes</h3>
-                <div class="depoimento-single">
-                    <p class="depoimento-descricao">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta at felis eu dignissim.
-                     Nunc arcu nulla, suscipit at arcu at, condimentum ultrices dolor. Curabitur a augue eget elit sagi
-                     ttis ornare sit amet a orci. Aenean mattis dolor purus, nec efficitur velit tincidunt nec. Class ap
-                     tent taciti sociosqu ad litora torquent per conubia nostra,
-                    </p>
-                    <p class="nome-autor">Lorem Ipsum</p>
-                </div><!--depoimento-single-->
+                <?php   
+                    $sql = mysql::Conectar()->prepare("SELECT * FROM  `tb_site.depoimentos` ORDER BY order_id ASC LIMIT 3");
+                    $sql->execute();
+                    $depoimentos = $sql->fetchAll();
+                    foreach ($depoimentos as $key => $value){
 
-                <div class="depoimento-single">
-                    <p class="depoimento-descricao">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta at felis eu dignissim.
-                     Nunc arcu nulla, suscipit at arcu at, condimentum ultrices dolor. Curabitur a augue eget elit sagi
-                     ttis ornare sit amet a orci. Aenean mattis dolor purus, nec efficitur velit tincidunt nec. Class ap
-                     tent taciti sociosqu ad litora torquent per conubia nostra,
-                    </p>
-                    <p class="nome-autor">Lorem Ipsum</p>
-                </div><!--depoimento-single-->
+                ?>
 
-                <div class="depoimento-single">
-                    <p class="depoimento-descricao">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta at felis eu dignissim.
-                     Nunc arcu nulla, suscipit at arcu at, condimentum ultrices dolor. Curabitur a augue eget elit sagi
-                     ttis ornare sit amet a orci. Aenean mattis dolor purus, nec efficitur velit tincidunt nec. Class ap
-                     tent taciti sociosqu ad litora torquent per conubia nostra,
-                    </p>
-                    <p class="nome-autor">Lorem Ipsum</p>
-                </div><!--depoimento-single-->
+                    <div class="depoimento-single">
+                        <p class="depoimento-descricao"><?php echo $value['depoimento']; ?></p>
+                        <p class="nome-autor"><?php echo $value['nome'] ?> <?php echo $value['data'] ?></p>
+                    </div><!--depoimento-single-->
+                <?php } ?>
             </div><!--w50-->
 
             <div id="servicos" class="w50 servicos-container left">
                 <h3>Serviços</h3>
                 <div class="servicos">
+
                     <ul>
-                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta at felis eu dignissim. Nunc arcu nulla, suscipit at arcu at, condimentum ultrices dolor. Curabitur a</li>
-                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta at felis eu dignissim. Nunc arcu nulla, suscipit at arcu at, condimentum ultrices dolor. Curabitur a</li>
-                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta at felis eu dignissim. Nunc arcu nulla, suscipit at arcu at, condimentum ultrices dolor. Curabitur a</li>
-                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porta at felis eu dignissim. Nunc arcu nulla, suscipit at arcu at, condimentum ultrices dolor. Curabitur a</li>
+                        <?php 
+                            $sql = mysql::Conectar()->prepare("SELECT * FROM  `tb_site.servicos` ORDER BY order_id ASC LIMIT 3");
+                            $sql->execute();
+                            $servicos = $sql->fetchAll();
+                            foreach ($servicos as $key => $value){
+                        ?>
+                        
+                        <li><?php echo $value['servico'] ?></li>
+
+                        <?php } ?>
                     </ul>
                 </div><!--servicos-->
             </div><!--w50-->

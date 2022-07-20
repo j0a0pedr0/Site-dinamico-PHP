@@ -17,9 +17,9 @@ $(function(){
                 initialize();
                 addMarker(40.7143528,-74.0059731,'',"Minha casa",false,true);
             },1000)
-
+            
             $('.container-principal').fadeIn(1000);
-
+            window.history.pushState('','',pagina);
             return false;
         })
     }
