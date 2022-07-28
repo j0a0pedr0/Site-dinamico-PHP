@@ -5,7 +5,7 @@ $(function(){
         return false;
     });*/
 
-    $('body').on('submit','form',function(){
+    $('body').on('submit','form.ajax-form',function(){
 
         //$('form').html('<input type="email" name"email" required /><input type="submit" value="Enviar" name="acao"/>');
         function limparInput(){

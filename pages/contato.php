@@ -2,7 +2,7 @@
 
 <div class="container-contato">
     <div class="center">
-        <form method="post">
+        <form class="ajax-form" method="post">
             <input type="text" name="nome" placeholder="Nome...">
             <input type="email" name="email" placeholder="E-Mail...">
             <input type="number" name="telefone" placeholder="Telefone...">

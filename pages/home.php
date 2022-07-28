@@ -1,5 +1,6 @@
 <section class="banner-container">
     <?php $slide = Painel::selectAll('tb_site.slides'); ?>
+    <?php $adm = Painel::select('tb_site.config'); ?>
     <?php foreach($slide as $key =>$value){
 
         ?>
@@ -8,7 +9,7 @@
         <div class="overlay"></div>
         <div class="center">
 
-            <form method="post">
+            <form class="ajax-form" method="post">
                 <h2>Qual o seu melhor e-mail?</h2>
                 <input type="email" name="email" required />
                 <input type="hidden" name="identificador" value="form_homsde"/>
@@ -21,14 +22,14 @@
         </div><!--center-->
     </section><!--BANNER_PRINCIPAL-->
 
-    <section class="descricao-autor">
+    <section class="descricao-autor" id="descricao_autor">
         <div class="center">
-            <div class="w50 descricao-autor-box left">
-                <h2><?php echo $infoSite['nome_autor']; ?></h2>
-                <p><?php echo $infoSite['descricao']; ?></p>
+            <div class="w100">
+            <img  src="./painel/uploads/<?php echo $adm['img'] ?>"/><h2><?php echo $infoSite['nome_autor']; ?></h2><br><p class="criador">Criador Ceo</p>   
             </div><!--W50-->
-            <div class="w50 left">
-                <img class="center-x" src="image/autor.jpg"/>
+
+            <div class="w100 descricao-autor-box">
+                <p><?php echo $infoSite['descricao']; ?></p>
             </div><!--W50-->
             <div class="clear"></div>
         </div><!--center-->

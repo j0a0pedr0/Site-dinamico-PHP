@@ -3,6 +3,7 @@
         Painel::loggout();
     }
 ?>
+<?php ob_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,6 +55,13 @@
             <a <?php selecionadoMenu('editar-usuario'); ?> href="<?php echo INCLUDE_PATH_PAINEL; ?>editar-usuario">Editar Usuário</a>
             <a <?php selecionadoMenu('adicionar-usuario'); ?> <?php verificarPermissaoMenu(2); ?> href="<?php echo INCLUDE_PATH_PAINEL; ?>adicionar-usuario">Adicionar Usuários</a>
 
+            <h2>Gestão Das Notícias</h2>
+            <a <?php selecionadoMenu('cadastrar-categorias'); ?> href="<?php echo INCLUDE_PATH_PAINEL; ?>cadastrar-categorias">Cadastrar Categorias</a>
+            <a <?php selecionadoMenu('gerenciar-categorias'); ?> href="<?php echo INCLUDE_PATH_PAINEL; ?>gerenciar-categorias">Gerênciar Categorias</a>
+            <a <?php selecionadoMenu('cadastrar-noticias'); ?> href="<?php echo INCLUDE_PATH_PAINEL; ?>cadastrar-noticias">Cadastrar Notícias</a>
+            <a <?php selecionadoMenu('gerenciar-noticias'); ?> href="<?php echo INCLUDE_PATH_PAINEL; ?>gerenciar-noticias">Gerênciar Notícias</a>
+
+
             <h2>Configuração Geral</h2>
             <a <?php selecionadoMenu('editar-site'); ?>  href="<?php echo INCLUDE_PATH_PAINEL; ?>editar-site">Editar Site</a>
         </div><!--items-menu-->
@@ -88,5 +96,17 @@
 <script src="<?php echo INCLUDE_PATH; ?>js/jquery-migrate-3.3.2.min.js" type="text/javascript"></script>
 <script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/jquery.mask.js" type="text/javascript"></script>
 <script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/main.js"></script>
+<script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/tinymce/tinymce.min.js"></script>
+<script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/tinymce/icons/default/icons.min.js"></script>
+<script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/tinymce/plugins"></script>
+<script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/tinymce/plugins/autolink/plugin.min.js"></script>
+<script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/tinymce/plugins/importcss/plugin.min.js"></script>
+<script>
+       tinymce.init({
+      selector: '.tinymce',
+      language:'pt_BR',
+      
+    });
+</script>
 </body>
 </html>

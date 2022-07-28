@@ -9,13 +9,30 @@
 
         <?php
             if(isset($_POST['acao'])){
+                $imagem_atual = $_POST['imagem_atual'];
+                $imagem = $_FILES['img'];
+                
                 //Enviei o meu formulário
-                if(Painel::update($_POST,true)){
-                    PAINEL::alert('sucesso','O serviço foi editado com sucesso!');
-                    $site = Painel::select('tb_site.config',false);
+                if($imagem['name'] !=''){
+                    if(PAINEL::imagemValida($imagem)){
+                        PAINEL::deleteFile($imagem_atual);
+                        $_POST['img']= PAINEL::uploadFile($imagem);
+                        Painel::update($_POST,true);
+                        Painel::alert('sucesso','Site editado com sucesso!');
+                        $site = Painel::select('tb_site.config',false);
+                    }else{
+                        Painel::alert('erro','O formato de imagem não é válido');
+                    }
                 }else{
-                    PAINEL::alert('erro','Campos vázios não são permitidos!');
-                    header("Refresh: 2.5");
+                   $imagem = $imagem_atual;
+                    if(Painel::update($_POST,true)){
+
+                        PAINEL::alert('sucesso','O site foi editado com sucesso!');
+                        $site = Painel::select('tb_site.config',false);
+                    }else{
+                        PAINEL::alert('erro','Campos vázios não são permitidos!');
+                        header("Refresh: 2.5");
+                    }
                 }
             }
         ?>
@@ -28,6 +45,12 @@
         <div class="form-group">
             <label><i class="fa-solid fa-envelope-open-text"></i> Nome Autor:</label>
            <input type="text" name="nome_autor" value="<?php echo $site['nome_autor']; ?>" />
+        </div><!--form-group-->
+        <div style="border:1px solid #0277bd;padding:7px"  class="form-group">
+            <label><i class="fa-solid fa-envelope-open-text"></i> Imagem Autor:</label>
+           <input style="width:calc(100% - 75px);" type="file" name="img"/><img  style="display:inline-block;width:55px;height:55px;" src="./uploads/<?php echo $site['img']; ?>">
+           <p style="position:relative;left:86%;top:-9px;color:#094283;">atual</p>
+           <input type="hidden" name="imagem_atual" value="<?php echo $site['img']; ?>">
         </div><!--form-group-->
 
         <div class="form-group">

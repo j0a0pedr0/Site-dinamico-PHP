@@ -34,7 +34,7 @@
     </div><!--box-metrica-single-->
 </div><!--box-content-->
 
-<div class="usuariosOnline box-content gambiarra-displayflex w100" style="margin-right:1%;">
+<div class="usuariosOnline box-content gambiarra-displayflex w100">
     <h2 class="w100 h2-mobile"><i style="margin-right:6px;color:#8beb0d;height:0px!important;" class="fa-solid fa-signal"></i>Usuários Online</h2>
     <div class="table-resposive">
         <div class="row">
@@ -63,7 +63,7 @@
     </div><!--table-resposive-->
 </div><!--box-content-->
  
-<div class="usuariosPainel box-content gambiarra-displayflex w100" style="margin-left:1%;">
+<div class="usuariosPainel box-content gambiarra-displayflex w100">
     <h2  class="w100 h2-mobile" ><i style="margin-right:6px;color:#83c3e7;" class="fa-solid fa-address-book"></i>Usuários do Painel</h2>
     <div class="table-resposive">
         <div class="row">

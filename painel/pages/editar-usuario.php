@@ -32,9 +32,11 @@
                     }
                 }else{
                     $imagem = $imagem_atual;
-                    $usuario = new Usuario();
                     if($usuario->atualizarUsuario($nome,$senha,$imagem)){
                         Painel::alert('sucesso','Atualizado com sucesso');
+                        $_SESSION['img'] = $imagem;
+                        $_SESSION['nome'] = $nome;
+                        $SESSION['password'] = $senha;
                     }else{
                         Painel::alert('erro','Ocorreu un erro ao atualizar');
                     }
