@@ -10,6 +10,7 @@
                 $titulo = $_POST['titulo'];
                 $conteudo = $_POST['conteudo'];
                 $capa = $_FILES['capa'];
+                $portfolio = $_POST['portfolio'];
             
                 if($titulo == '' || $conteudo == ''){
                     Painel::alert('erro','Campos Vázios não são permitidos!');
@@ -22,7 +23,7 @@
                         if(Painel::imagemValida($capa)){
                             $imagem = Painel::uploadFile($capa);
                             $slug = Painel::generateSlug($titulo);
-                            $arr = ['categoria_id'=>$categoria_id,'data'=>date('Y-m-d'),'titulo'=>$titulo,'conteudo'=>$conteudo,'capa'=>$imagem,'slug'=>$slug,'order_id'=>0,'nome_tabela'=>'tb_site.noticias'];
+                            $arr = ['categoria_id'=>$categoria_id,'data'=>date('Y-m-d'),'titulo'=>$titulo,'conteudo'=>$conteudo,'capa'=>$imagem,'slug'=>$slug,'portfolio'=>$portfolio,'order_id'=>0,'nome_tabela'=>'tb_site.noticias'];
                             if(Painel::insert($arr))
                             Painel::alert('sucesso','Notícia cadastrada com sucesso');
                         }else{
@@ -53,6 +54,11 @@
         <div class="form-group">
             <label><i class="fa-solid fa-clapperboard"></i> Título</label>
             <input type="text" name="titulo" value="<?php recoverPost('titulo'); ?>"/>
+        </div><!--form-group-->
+
+        <div class="form-group">
+            <label><i class="fa-solid fa-clapperboard"></i> portfolio</label>
+            <input type="text" name="portfolio" value="<?php recoverPost('portfolio'); ?>"/>
         </div><!--form-group-->
 
 

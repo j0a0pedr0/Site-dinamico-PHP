@@ -21,6 +21,8 @@
                 $imagem = $_FILES['imagem'];
                 $imagem_atual = $noticias['capa'];
                 $conteudo = $_POST['conteudo'];
+                $portfolio = @$_POST['portfolio'];
+                
                 $verificar = Mysql::Conectar()->prepare("SELECT * FROM `tb_site.noticias` WHERE titulo = ? AND id != ?");
                 $verificar->execute(array($titulo,$id));
                 if($verificar->rowCount() == 0){
@@ -30,7 +32,7 @@
                             PAINEL::deleteFile($imagem_atual);
                             $imagem = PAINEL::uploadFile($imagem);
                             $slug = Painel::generateSlug($titulo);
-                            $arr = ['categoria_id'=>$categoria_id,'data'=>date('Y-m-d'),'titulo'=>$titulo,'conteudo'=>$conteudo,'capa'=>$imagem,'slug'=>$slug,'id'=>$id,'nome_tabela'=>'tb_site.noticias'];
+                            $arr = ['categoria_id'=>$categoria_id,'data'=>date('Y-m-d'),'titulo'=>$titulo,'conteudo'=>$conteudo,'capa'=>$imagem,'slug'=>$slug,'portfolio'=>$portfolio,'id'=>$id,'nome_tabela'=>'tb_site.noticias'];
                             Painel::update($arr);
                             $noticias = Painel::select('tb_site.noticias','id = ?',array($id));
                             Painel::alert('sucesso','A notícia foi editada com sucesso!');
@@ -39,7 +41,7 @@
                         }
                     }else{
                         $slug = Painel::generateSlug($titulo);
-                        $arr = ['categoria_id'=>$categoria_id,'titulo'=>$titulo,'conteudo'=>$conteudo,'capa'=>$imagem_atual,'slug'=>$slug,'id'=>$id,'nome_tabela'=>'tb_site.noticias'];
+                        $arr = ['categoria_id'=>$categoria_id,'titulo'=>$titulo,'conteudo'=>$conteudo,'capa'=>$imagem_atual,'slug'=>$slug,'portfolio'=>$portfolio,'id'=>$id,'nome_tabela'=>'tb_site.noticias'];
                         Painel::update($arr);
                         $noticias = Painel::select('tb_site.noticias','id = ?',array($id));
                         Painel::alert('sucesso','A noticia foi editada com sucesso!');
@@ -68,6 +70,11 @@
         <div class="form-group">
             <label><i class="fa-solid fa-user"></i> Título:</label>
             <input type="text" name="titulo" value="<?php echo $noticias['titulo'] ?>" required/>
+        </div><!--form-group-->
+
+        <div class="form-group">
+            <label><i class="fa-solid fa-user"></i> Portfolio:</label>
+            <input type="text" name="portfolio" value="<?php echo $noticias['portfolio'] ?>" required/>
         </div><!--form-group-->
 
         <div class="form-group">

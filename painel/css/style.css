@@ -7,7 +7,6 @@
 html,
 body {
   background: #abecec;
-  overflow-x: hidden;
 }
 html ::-webkit-scrollbar-track,
 body ::-webkit-scrollbar-track {

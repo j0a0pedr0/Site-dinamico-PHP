@@ -21,6 +21,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo INCLUDE_PATH; ?>fontawesome-free-6.1.1-web/css/all.min.css">
     <link rel="stylesheet" href="<?php echo INCLUDE_PATH; ?>js/funcoes-mobile/style.css">
     <link rel="stylesheet" href="<?php echo INCLUDE_PATH; ?>css/style.css">
@@ -41,8 +44,12 @@
                 break;
         }
         $descricao_autor = isset($_GET['descricao_autor']);
+        $habilidades = isset($_GET['habilidades']);
+
         if($descricao_autor != ''){
             echo '<target target="descricao_autor" />';
+        }else if($habilidades != ''){
+            echo '<target target="habilidades"/>';
         }
     ?>
 
@@ -62,9 +69,9 @@ ini_set('display_errors', 'On') ?>
             <nav class="desktop right">  
                 <ul>
                     <li><a href="<?php echo INCLUDE_PATH; ?>">Home</a></li>
-                    <li><a href="<?php echo INCLUDE_PATH; ?>sobre">Sobre</a></li>
-                    <li><a href="<?php echo INCLUDE_PATH; ?>servicos">Serviços</a></li>
-                    <li><a href="<?php echo INCLUDE_PATH; ?>noticias">Notícias</a></li>
+                    <li><a href="<?php echo INCLUDE_PATH; ?>?descricao_autor">Sobre</a></li>
+                    <li><a href="<?php echo INCLUDE_PATH; ?>?habilidades">Habilidades</a></li>
+                    <li><a href="<?php echo INCLUDE_PATH; ?>noticias">Portfólio</a></li>
                     <li><a realtime="contato" href="<?php echo INCLUDE_PATH; ?>contato">Contato</a></li>
                 </ul>
             </nav><!--DESKTOP-->
@@ -91,7 +98,7 @@ ini_set('display_errors', 'On') ?>
             if(file_exists('pages/'.$url.'.php')){
                 include('pages/'.$url.'.php');
             }else{
-                if($url != 'sobre' && $url != 'servicos'){
+                if($url != 'sobre' && $url != 'servicos' && $url != 'habilidades'){
                     $urlPar = explode('/',$url);
                     if($urlPar[0] != 'noticias'){
                         $pagina404 = true;

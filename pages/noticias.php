@@ -11,7 +11,7 @@
 <section class="header-noticias">
     <div class="center">
         <h2><i class="fa-solid fa-bell"></i></h2>
-        <h2>Acompanhe as útimas <p>notícias do portal</p></h2>
+        <h2>Acompanhe os últimos Projetos do meu <p>Portfólio</p></h2>
     </div><!--center-->
 </section><!--Header-noticias-->
 
@@ -70,9 +70,9 @@
                     $porPagina = 2;
                     if(!isset($_POST['parametro'])){
                         if(@$categoria['nome'] == ''){
-                            echo '<h2>Visualizando <span>todos os Posts</span></h2>';
+                            echo '<h2>Visualizando <span>todos os Projetos</span></h2>';
                         }else{
-                            echo '<h2>Visualizando Posts em <span>'.$categoria['nome'].'</span></h2>';
+                            echo '<h2>Visualizando projetos do curso <span>'.$categoria['nome'].'</span></h2>';
                         }
                     }else{
                         echo '<h2><i class="fa fa-check"></i> Busca Realizada com  <span style="color:lightgreen;">Sucesso</span></h2>';
@@ -137,10 +137,12 @@
                         $totalNoticias = $sql->rowCount();
                         if($totalNoticias === 1){
                             $resultados = 'resultado';
+                            $apenas = 'apenas';
                         }else{
                             $resultados = 'resultados';
+                            $apenas = 'Um Total de';
                         }
-                        echo '<h2 style="font-size:15px;">Um Total de <span style="color:darkblue;font-size:19px;">'.$totalNoticias.'</span> '.$resultados.'</h2>';
+                        echo '<h2 style="font-size:15px;">'.$apenas.' <span style="color:darkblue;font-size:19px;">'.$totalNoticias.'</span> '.$resultados.'</h2>';
                     }
                     
                 ?>
@@ -153,9 +155,16 @@
             ?>
                 
                 <div class="box-single-conteudo">
-                    <h3><?php echo date(('d/m/Y'),strtotime($value['data'])); ?> - <?php echo $value['titulo']; ?></h2>
-                    <p><?php echo substr(strip_tags($value['conteudo']),0,400).'...' ?></p>
-                    <a href="<?php echo INCLUDE_PATH; ?>noticias/<?php echo $categoriaNome; ?>/<?php echo $value['slug']; ?>">Leia mais</a>
+                    <div class="left w100 noticias">
+                        <h3><?php echo date(('d/m/Y'),strtotime($value['data'])); ?> - <?php echo $value['titulo']; ?></h2>
+                        <p><?php echo substr(strip_tags($value['conteudo']),0,400).'...' ?></p>
+                        
+                    </div>
+                    <div class="left w100 noticias">
+                        <div class="logo-noticias" style="background-image: url('<?php echo INCLUDE_PATH_PAINEL; ?>uploads/<?php echo $value['capa']; ?>'); background-size:100% 100%;width:100%;height:290px;border-radius:19px;"></div>
+                        <a href="<?php echo $value['portfolio']; ?>">Acessar Site</a>
+                    </div>
+                    <div class="clear"></div>
                 </div><!--box-single-conteudo-->
             <?php } ?>
 

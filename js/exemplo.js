@@ -6,7 +6,7 @@ $(function(){
     var animacaoDelay = 3;
 
 
-        executarAnimacao();
+       // executarAnimacao();
  
         
     
