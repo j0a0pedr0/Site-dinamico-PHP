@@ -51,6 +51,7 @@
         }else if($habilidades != ''){
             echo '<target target="habilidades"/>';
         }
+
     ?>
 
     <?php error_reporting(E_ALL);
@@ -81,9 +82,9 @@ ini_set('display_errors', 'On') ?>
                 <div id="mobile-menu" class="mobile-menu hide">
                 <ul>
                     <li><a href="<?php echo INCLUDE_PATH; ?>">Home</a></li>
-                    <li><a href="<?php echo INCLUDE_PATH; ?>sobre">Sobre</a></li>
-                    <li><a href="<?php echo INCLUDE_PATH; ?>servicos">Serviços</a></li>
-                    <li><a href="<?php echo INCLUDE_PATH; ?>noticias">Notícias</a></li>
+                    <li><a href="<?php echo INCLUDE_PATH; ?>?descricao_autor">Sobre</a></li>
+                    <li><a href="<?php echo INCLUDE_PATH; ?>?habilidades">Habilidades</a></li>
+                    <li><a href="<?php echo INCLUDE_PATH; ?>noticias">Portfólio</a></li>
                     <li><a realtime="contato" href="<?php echo INCLUDE_PATH; ?>contato">Contato</a></li>
                 </ul>
                 </div><!--mobile-menu-->

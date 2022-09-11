@@ -21,6 +21,38 @@ html,body{
 
 }
 
+.pago{background-color: #6df089;border:2px solid #108340;min-width:57px;color:rgb(13, 59, 11) !important;};
+.contato{background-color: #2cd3cb;border:2px solid #058f8f;min-width:57px;color:rgb(13, 46, 138);};
+.edit{background-color: #f8e803;border:2px solid #ada30d;min-width:57px;};
+.delete{background-color: #ff8181;border:2px solid #e43636;};
+.btn-order{
+    background-color: #8ab3ff;
+    border:2px solid #4668a8;
+}
+
+.gerar-pdf{
+    margin:15px 0px;
+    a{
+        color:rgb(0, 0, 0);
+        text-decoration:none;
+        font-size:17px;
+        padding:9px 10px;
+        background-color:#f0a98f;
+        border-radius:6px;
+        font-weight:bold
+    }
+}
+
+.img-produto{
+    //background-image: url('../uploads/62d153cb1ae47.jpg');
+    background-size:100% 100%;
+    background-position:center;
+    height:170px;
+    width:100%;
+    max-width:235px;
+    margin:0 auto;
+}
+
 
 .erro-box{
     width:92%;
@@ -45,16 +77,24 @@ html,body{
 .w100{
     width:100%;
 }
+.w60{
+    width:60% !important;
+}
+.w40{
+    width:40% !important;
+}
 .w50{
     width:50%;
 }
 .w49{
     width:49%;
 }
-.w33{
+.w33-3{
     width:33.3%;
 }
-
+.w33{
+    width:33%;
+}
 .box-login{
     width:95%;
     max-width:600px;
@@ -336,7 +376,8 @@ div.menu{
                 }
             }
             input[type=text],
-            input[type=password],select,textarea{
+            input[type=password]
+            input[type=number],select,textarea{
                 resize:vertical;
                 font-size:16px;
                 font-weight:normal;
@@ -362,6 +403,11 @@ div.menu{
                 color:#07307c;
                 cursor:pointer;
                 border-radius:15px;
+            }
+            input[type=number]{
+                height:30px;
+                font-size:23px;
+                width:100px;
             }
         }
     }
@@ -395,6 +441,10 @@ div.menu{
 .erro{
     background-color: #f87676;
     color:#751f1f;
+}
+.alert{
+    background-color: #fbff0f;
+    color:#434926;
 }
 .menu-active{
     background-color: #266386;
@@ -460,12 +510,14 @@ div.menu{
                     border-radius:5px;
                     font-size:10px;
                     
+                    
                     &:hover{
                         transform: scale(1.1,1.1);
                     }
                     
                 }
-
+                .pago{background-color: #6df089;border:2px solid #108340;min-width:57px;color:rgb(13, 59, 11) !important;};
+                .contato{background-color: #2cd3cb;border:2px solid #058f8f;min-width:57px;color:rgb(13, 46, 138);};
                 .edit{background-color: #f8e803;border:2px solid #ada30d;min-width:57px;};
                 .delete{background-color: #ff8181;border:2px solid #e43636;};
                 .btn-order{
@@ -488,11 +540,177 @@ div.menu{
         border:1px solid #ccc;
         text-decoration:none;
         color:#666;
+        
     }
     .paginacao a.page-selected{
         background-color:rgb(220,220,220);
     }
+    .paginacao a.page-selected-2{
+        background-color:rgb(220,220,220);
+    }
 }
+
+//inicio do estilo da pagina de GERENCIAR_CLIENTES
+div.busca{
+    margin: 30px 0 30px 0;
+    padding:20px 10px 20px 10px;
+    display:flex;
+    flex-wrap:wrap;
+    background:#c4e2f1;
+    border-radius:13px;
+    h4{
+        text-align:center;
+        margin-bottom:9px;
+    }
+    form{
+        margin:0 !important;
+        padding: 0 !important;
+        text-align:center;
+        p{
+            position:relative;
+            top:14px;
+        }
+
+        select{
+            margin:15px auto;
+            width:90px;
+            display:block;
+        }
+
+        input[type=text]{
+            display: inline-block;
+            width:40%;
+            padding-left:8px;
+            min-width:200px;
+        }
+        input[type=submit]{
+            border:2px solid #CCC;
+            display: block;
+            padding:3px 9px 3px 9px;
+            width:60px;
+            border-radius:17px;
+            margin:10px auto;
+            cursor:pointer;
+            &:hover{
+                transform:scale(1.1,1.1);
+            }
+        }
+    }
+}
+
+div.busca-results{
+    p{
+        font-size:15px;
+    }
+}
+
+
+div.boxes{
+    display: flex;
+    flex-wrap: wrap;
+    .box-single-wraper{
+        padding:20px;
+        display: flex;
+        flex-wrap:wrap;
+        
+        .box-single{
+            width:100%;
+            border:1px solid #ccc;
+            min-height:200px;
+            overflow-x: auto;
+            img{
+                display:block;
+                margin:0 auto;
+                width:100%;
+                max-width:300px;
+                min-height:170px;
+            }
+
+            .topo-box{
+                width:100%;
+                border-bottom:1px solid #ccc;
+                color:#ccc;
+                padding:5px 4px;
+                text-align:center;
+                h2{
+                    color:#ccc;
+                    font-size:30px;
+                    margin:0;
+                }
+                div.img-cliente{
+                    background-size:cover;
+                    background-position:center;
+                    width:100px;
+                    height:100px;
+                    border-radius:20%;
+                    display: inline-block;
+                }
+            }
+            .body-box{
+                padding:13px;
+                p{
+                    font-size:15px;
+                    color:rgb(114, 113, 113);
+                    margin-bottom:9px;
+                }
+                .group-btn{
+                    
+                    margin-top:19px;
+                    a{
+                        text-decoration: none;
+                        padding:2px 5px;
+                        border-radius:7px;
+                    }
+                    .edit{background-color: #f8e803;border:2px solid #ada30d;min-width:57px;color:rgb(95, 95, 12);};
+                    .delete{background-color: #ff8181;border:2px solid #e43636;color:rgb(134, 48, 48);};
+
+                    //ESTILIZANDO MODULO ESTOQUE
+                    form.form-quantidade{
+                        margin: 0 !important;
+                        padding-bottom:5px;
+                        input[type=number]{
+                            position:relative;
+                            top:3px;
+                        }
+                        input[type=submit]{
+                            position: initial;
+                            display: inline-block;
+                            padding:3px 8px;
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+//ESTILIZANDO O VISUALIZAR_PRODUTOS
+
+.pago{background-color: #6df089;border:2px solid #108340;min-width:57px;color:rgb(13, 59, 11) !important;};
+.contato{background-color: #2cd3cb;border:2px solid #058f8f;min-width:57px;color:rgb(13, 46, 138);};
+.edit{background-color: #f8e803;border:2px solid #ada30d;min-width:57px;};
+.delete{background-color: #ff8181;border:2px solid #e43636;color:rgb(133, 18, 18);border-radius:6px;&:hover{transform: scale(1.1,1.1);}};
+.btn-order{
+    background-color: #8ab3ff;
+    border:2px solid #4668a8;
+}
+
+
+@media screen and (max-width:1300px ){
+    .w33{
+        width:50% !important;
+    }
+    .w60{
+        width:100% !important;
+    }
+    .w40{
+        width:100% !important;
+    }
+}
+
+
 @media screen and (min-width:770px){
     .menu{
         display: block !important;
@@ -523,8 +741,15 @@ div.menu{
         
         width: 100% !important;;
     }
+    .w50{
+        width: 100% !important;
+    }
 }
 @media screen and (max-width:600px){
+    html,body{
+        //overflow-y: hidden !important;
+        overflow-x: hidden;
+    }
     .box-content{
         .box-metrica-single{
             display: flex;
@@ -548,6 +773,9 @@ div.menu{
         }
         .w33{
             width: 100% !important;;
+        }
+        .w50{
+            width: 100% !important;
         }
     }
 

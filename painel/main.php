@@ -14,10 +14,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo INCLUDE_PATH; ?>fontawesome-free-6.1.1-web/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/zebra_datepicker@latest/dist/css/default/zebra_datepicker.min.css">
     <link rel="stylesheet" href="<?php echo INCLUDE_PATH_PAINEL; ?>css/style.css">
     <title>Painel de Controle</title>
 </head>
 <body>
+
+<base base="<?php echo INCLUDE_PATH_PAINEL; ?>" />
 
 <div class="menu">
     <div class="menu-wraper">
@@ -61,6 +64,16 @@
             <a <?php selecionadoMenu('cadastrar-noticias'); ?> href="<?php echo INCLUDE_PATH_PAINEL; ?>cadastrar-noticias">Cadastrar Notícias</a>
             <a <?php selecionadoMenu('gerenciar-noticias'); ?> href="<?php echo INCLUDE_PATH_PAINEL; ?>gerenciar-noticias">Gerênciar Notícias</a>
 
+            <h2>Gestão De Clientes</h2>
+            <a <?php selecionadoMenu('cadastrar-clientes'); ?> href="<?php echo INCLUDE_PATH_PAINEL; ?>cadastrar-clientes">Cadastrar Clientes</a>
+            <a <?php selecionadoMenu('gerenciar-clientes'); ?> href="<?php echo INCLUDE_PATH_PAINEL; ?>gerenciar-clientes">Gerênciar Clientes</a>
+
+            <h2>Controle Financeiro</h2>
+            <a <?php selecionadoMenu('visualizar-pagamentos'); ?> href="<?php echo INCLUDE_PATH_PAINEL; ?>visualizar-pagamentos">Visualizar Pagamentos</a>
+
+            <h2>Controle de Estoque</h2>
+            <a <?php selecionadoMenu('cadastrar-produtos'); ?> href="<?php echo INCLUDE_PATH_PAINEL; ?>cadastrar-produtos">Cadastrar Produtos</a>
+            <a <?php selecionadoMenu('visualizar-produtos'); ?> href="<?php echo INCLUDE_PATH_PAINEL; ?>visualizar-produtos">Visualizar Produtos</a>
 
             <h2>Configuração Geral</h2>
             <a <?php selecionadoMenu('editar-site'); ?>  href="<?php echo INCLUDE_PATH_PAINEL; ?>editar-site">Editar Site</a>
@@ -94,8 +107,10 @@
 <script src="<?php echo INCLUDE_PATH; ?>js/jquery.js"></script>
 <script src="<?php echo INCLUDE_PATH; ?>js/jquery-migrate-1.4.1.min.js" type="text/javascript"></script>
 <script src="<?php echo INCLUDE_PATH; ?>js/jquery-migrate-3.3.2.min.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/zebra_datepicker@1.9.13/dist/zebra_datepicker.min.js"></script>
 <script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/jquery.mask.js" type="text/javascript"></script>
 <script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/main.js"></script>
+<script src="<?php echo INCLUDE_PATH; ?>js/constants.js"></script>
 <script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/tinymce/tinymce.min.js"></script>
 <script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/tinymce/icons/default/icons.min.js"></script>
 <script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/tinymce/plugins"></script>
@@ -108,5 +123,15 @@
       
     });
 </script>
+<script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/jquery.form.min.js"></script>
+<script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/helperMask.js"></script>
+<?php Painel::loadJS(array('ajax.js'),'gerenciar-clientes'); ?>
+<?php Painel::loadJS(array('ajax.js'),'editar-cliente'); ?>
+<?php Painel::loadJS(array('ajax.js'),'cadastrar-clientes'); ?>
+<?php Painel::loadJS(array('ajax.js'),'visualizar-produtos'); ?>
+<?php Painel::loadJS(array('ajax.js'),'editar-produto'); ?>
+<?php Painel::loadJS(array('financeiroCliente.js'),'editar-cliente'); ?>
+<?php Painel::loadJS(array('maskMoney.js'),'editar-cliente'); ?>
+
 </body>
 </html>

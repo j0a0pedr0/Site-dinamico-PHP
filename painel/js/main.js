@@ -62,8 +62,8 @@ $(function(){
     $('[formato=data]').mask('99/99/9999');
 
     $('[actionBtn=delete]').click(function(){
-        var txt;
-        var r = confirm("Deseja excluir o registro");
+        var txt = '"Deseja excluir o registro"';
+        var r = confirm(txt);
         if(r == true){
             return true
         }else{

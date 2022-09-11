@@ -10,9 +10,9 @@
 
     $autoload = function($class){
         if($class == 'Email'){
-            require_once('./classes/vendor/autoload.php');
+            require_once('classes/vendor/autoload.php');
         }
-        include('./classes/'.$class.'.php');
+        include('classes/'.$class.'.php');
     };
 
    

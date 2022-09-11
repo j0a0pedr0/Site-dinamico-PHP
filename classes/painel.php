@@ -9,6 +9,15 @@
             '2' => 'Administrador'
         ];
 
+        public static function loadJS($files,$page){
+            $url = explode('/',@$_GET['url'])[0];
+            if($page == $url){
+                foreach($files as $key => $value){
+                    echo '<script src="'.INCLUDE_PATH_PAINEL.'js/'.$value.'"></script>';
+                }
+            }
+        }
+
         public static function generateSlug($str){
 			$str = mb_strtolower($str);
 			$str = preg_replace('/(â|á|ã|à)/', 'a', $str);
@@ -63,10 +72,12 @@
 
         public static function alert($tipo,$mensagem,$margin=null){
             if($tipo == 'sucesso'){
-                echo '<div style="transition:2s;" class="box-alert opasity sucesso"><i class="fa-solid fa-user-check"></i>  '.$mensagem.'</div>';
+                echo '<div style="transition:2s;'.$margin.'" class="box-alert opasity sucesso"><i class="fa-solid fa-user-check"></i>  '.$mensagem.'</div>';
                 
             }else if($tipo == 'erro'){
                 echo '<div style="'.$margin.'" class="box-alert erro opasity"><i class="fa-solid fa-times"></i>  '.$mensagem.'</div>';
+            }else if($tipo == 'alert'){
+                echo '<div style="'.$margin.'" class="box-alert alert opasity"><i class="fa-solid fa-triangle-exclamation"></i>  '.$mensagem.'</div>';
             }
             
         }
@@ -77,7 +88,7 @@
                 $imagem['type'] == 'image/png'){
 
                     $tamanho = intval($imagem['size']/1024);
-                    if($tamanho < 300)
+                    if($tamanho < 1200)
                         return true;
                     else
                         return false;
