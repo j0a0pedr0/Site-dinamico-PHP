@@ -16,10 +16,10 @@
 ?>
 
 <div class="box-content editarUsuario w100">
-    <h2 class="w100" ><i class="fa-solid fa-box"></i>  Editar Produto: Luva de thai</h2>
+    <h2 class="w100" ><i class="fa-solid fa-box"></i>  Editar Produto: <?php echo $infoProduto['nome']; ?></h2>
     
     <form method="POST" enctype="multipart/form-data">
-    <h4 class="w100" ><i class="fa-solid fa-file-lines"></i>  Informações do Produto: Luva de thai</h2>
+    <h4 class="w100" ><i class="fa-solid fa-file-lines"></i>  Informações do Produto: <?php echo $infoProduto['nome']; ?></h2>
     <?php
         if(isset($_POST['acao'])){
             $nome = $_POST['nome'];
@@ -117,7 +117,7 @@
 
 
     <div class="w100 box-content">
-        <h4 class="w100" ><i class="fa-solid fa-image"></i>  Imagens do Produto: Luva de thai</h2>
+        <h4 class="w100" ><i class="fa-solid fa-image"></i>  Imagens do Produto: <?php echo $infoProduto['nome']; ?></h2>
         <?php foreach($pegarImagens as $key => $value){ ?>
             <div class="box-single-wraper w33" style="padding:4px;">
 

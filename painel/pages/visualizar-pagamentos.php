@@ -25,7 +25,7 @@
                 $email->enviarEmail();
 
 
-                setcookie('cliente_'.$cliente_id,'true',time()+(30),'/');
+                setcookie('cliente_'.$cliente_id,'true',time()+(60*60*6),'/');
                 Painel::alert('sucesso','O E-Mail foi enviado com sucesso!(--AGUARDE 6 Hrs para Enviar novamente!--)','margin-top:150px;');
             } 
         }
@@ -80,7 +80,7 @@
             <tr <?php echo $style; ?> >
                 <td><?php echo $value['nome']; ?></td>
                 <td><?php echo $clienteNome; ?></td>
-                <td><?php echo $value['valor']; ?></td>
+                <td>R$<?php echo Painel::convertMoney((float)$value['valor']); ?></td>
                 <td><?php echo date('d/m/Y',strtotime($value['vencimento'])); ?></td>
                 <td><a class="btn contato" href="<?php echo INCLUDE_PATH_PAINEL; ?>visualizar-pagamentos?email=<?php echo $clienteId ?>&parcela=<?php echo $value['id']; ?>"><i class="fa-solid fa-paper-plane"></i> E-mail</a></td>
                 <td><a class="btn pago" href="<?php echo INCLUDE_PATH_PAINEL; ?>visualizar-pagamentos?pago=<?php echo $value['id']; ?>"><i class="fa-solid fa-circle-check"></i> Pago</a></td>
@@ -149,7 +149,7 @@
             <tr style="background-color:rgba(173, 238, 208, 0.933);font-weight:550;">
                 <td><?php echo $value['nome']; ?></td>
                 <td><?php echo $clienteNome; ?></td>
-                <td><?php echo $value['valor']; ?></td>
+                <td>R$<?php echo Painel::convertMoney((float)$value['valor']); ?></td>
                 <td><?php echo date('d/m/Y',strtotime($value['vencimento'])); ?></td>
                 <td><?php echo date('d/m/Y -- H:i',strtotime($value['data_pagamento'])); ?></td>
             </tr>   

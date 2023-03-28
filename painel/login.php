@@ -11,6 +11,7 @@
             $_SESSION['login'] = true;
             $_SESSION['user'] = $user;
             $_SESSION['password'] = $password;
+            $_SESSION['id'] = $info['id'];
             $_SESSION['cargo'] = $info['cargo'];
             $_SESSION['nome'] = $info['nome'];
             $_SESSION['img'] = $info['img'];
@@ -50,6 +51,7 @@
                         $_SESSION['login'] = true;
                         $_SESSION['user'] = $user;
                         $_SESSION['password'] = $password;
+                        $_SESSION['id'] = $info['id'];
                         $_SESSION['cargo'] = $info['cargo'];
                         $_SESSION['nome'] = $info['nome'];
                         $_SESSION['img'] = $info['img'];

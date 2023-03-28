@@ -92,5 +92,71 @@ $(function(){
         }
         return false;
     });
+    $('[actionBtn=delete-empreendimento]').click(function(){
+        var el = $(this).parent().parent().parent().parent();
+        var item_id = $(this).attr('item_id');
+        var item_imagem = $(this).attr('item_img');
+        var msg = 'TEM CERTEZA QUE DESEJA EXCLUIR ESSE EMPREENDIMENTO???';
+        var response = confirm(msg);
+
+        if(response){
+            $.ajax({
+                url:include_path+'ajax/forms.php',
+                data:({id:item_id,tipo_acao:'delete-empreendimento',imagem:item_imagem}),
+                method:'POST'
+            }).done(function(){
+                el.fadeOut(500);
+                return false;
+            })
+        }else{
+            return false
+        }
+        return false;
+    });
+
+    $('[actionBtn=delete-imagem-imovel]').click(function(){
+        
+        var el = $(this).parent().parent().parent().parent();
+        var item_id = $(this).attr('item_id');
+        var item_name = $(this).attr('item_name');
+        var msg = 'Tem certeza que deseja excluir essa Imagem';
+        var response = confirm(msg);
+
+        if(response){
+            $.ajax({
+                url:include_path+'ajax/forms.php',
+                data:({id:item_id,tipo_acao:'delete-imagem-imovel',imagem:item_name}),
+                method:'post'
+            }).done(function(){
+                el.fadeOut(500);
+                return false;
+            })
+        }else{ 
+            return false;
+        }
+        return false;
+    });
+
+    $('[actionBtn=delete-imovel]').click(function(){
+        var el = $(this).parent().parent();
+        var item_id = $(this).attr('item_id');
+        var msg = 'Tem certeza que deseja excluir esse Imóvel';
+        var response = confirm(msg);
+
+        if(response){
+            $.ajax({
+                url:include_path+'ajax/forms.php',
+                data:({id:item_id,tipo_acao:'delete-imovel-single'}),
+                method:'post'
+            }).done(function(){
+                el.fadeOut(500);
+                return false;
+            })
+            return false;
+        }else{ 
+            return false;
+        }
+        return false;
+    });
 
 });

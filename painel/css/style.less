@@ -19,16 +19,32 @@ html,body{
         border-radius:10px;
     }
 
+    input{
+        &:focus{
+            outline:0;
+        }
+    }
 }
 
 .pago{background-color: #6df089;border:2px solid #108340;min-width:57px;color:rgb(13, 59, 11) !important;};
 .contato{background-color: #2cd3cb;border:2px solid #058f8f;min-width:57px;color:rgb(13, 46, 138);};
-.edit{background-color: #f8e803;border:2px solid #ada30d;min-width:57px;};
-.delete{background-color: #ff8181;border:2px solid #e43636;};
+.edit{background-color:#f8e803;border:2px solid #ada30d;min-width:57px;color:black; };
+.delete{background-color: #ff8181;border:2px solid #e43636;color:rgb(133, 18, 18);border-radius:6px; };
+.normal{background-color: #47beec;border:2px solid #36a1c2;color:rgb(9, 10, 10) !important;border-radius:6px; };
 .btn-order{
     background-color: #8ab3ff;
     border:2px solid #4668a8;
 }
+a.btn{
+    display:inline-block;
+    &:hover{
+        transform: scale(1.1,1.1);
+    }
+    
+}
+
+
+
 
 .gerar-pdf{
     margin:15px 0px;
@@ -50,6 +66,15 @@ html,body{
     height:170px;
     width:100%;
     max-width:235px;
+    margin:0 auto;
+}
+.img-produto-empreendimento{
+    //background-image: url('../uploads/62d153cb1ae47.jpg');
+    background-size:100% 100%;
+    background-position:center;
+    height:470px;
+    width:100%;
+    //max-width:235px;
     margin:0 auto;
 }
 
@@ -516,14 +541,6 @@ div.menu{
                     }
                     
                 }
-                .pago{background-color: #6df089;border:2px solid #108340;min-width:57px;color:rgb(13, 59, 11) !important;};
-                .contato{background-color: #2cd3cb;border:2px solid #058f8f;min-width:57px;color:rgb(13, 46, 138);};
-                .edit{background-color: #f8e803;border:2px solid #ada30d;min-width:57px;};
-                .delete{background-color: #ff8181;border:2px solid #e43636;};
-                .btn-order{
-                    background-color: #8ab3ff;
-                    border:2px solid #4668a8;
-                }
             }
         }
     }
@@ -549,6 +566,8 @@ div.menu{
         background-color:rgb(220,220,220);
     }
 }
+
+
 
 //inicio do estilo da pagina de GERENCIAR_CLIENTES
 div.busca{
@@ -661,8 +680,6 @@ div.boxes{
                         padding:2px 5px;
                         border-radius:7px;
                     }
-                    .edit{background-color: #f8e803;border:2px solid #ada30d;min-width:57px;color:rgb(95, 95, 12);};
-                    .delete{background-color: #ff8181;border:2px solid #e43636;color:rgb(134, 48, 48);};
 
                     //ESTILIZANDO MODULO ESTOQUE
                     form.form-quantidade{
@@ -686,17 +703,119 @@ div.boxes{
 }
 
 
-//ESTILIZANDO O VISUALIZAR_PRODUTOS
-
-.pago{background-color: #6df089;border:2px solid #108340;min-width:57px;color:rgb(13, 59, 11) !important;};
-.contato{background-color: #2cd3cb;border:2px solid #058f8f;min-width:57px;color:rgb(13, 46, 138);};
-.edit{background-color: #f8e803;border:2px solid #ada30d;min-width:57px;};
-.delete{background-color: #ff8181;border:2px solid #e43636;color:rgb(133, 18, 18);border-radius:6px;&:hover{transform: scale(1.1,1.1);}};
-.btn-order{
-    background-color: #8ab3ff;
-    border:2px solid #4668a8;
+//Estilizando visualizar Empreendimentos///
+.info-item{
+    display: flex;
+    flex-wrap:nowrap;
+    width:100%;
+    padding:14px 0;
+    .row1{
+        width:30%;
+        padding:8px 5px;
+        min-width:373px;
+        
+    }
+    .row2{
+        width:70%;
+        padding:8px 5px;
+    }
 }
 
+
+//ESTILIZANDO CHAT_ONLINE
+.box-chat-online{
+    width:100%;
+    height:500px;
+    padding:0px 0px;
+    overflow-y:scroll;
+    background-color: #c8e8fa;
+    .mensagem-chat{
+        border:2px solid rgb(144, 173, 173);
+        padding:20px;
+        
+        span{
+            padding:5px 12px;
+            background-color: #0277bd;
+            border-radius:15px;
+            color:white;
+        }
+        p{
+            margin-top:9px;
+        }
+    }
+}
+
+
+.form-chat{
+    width:100%;
+    textarea{
+        width:100%;
+        height:90px;
+        padding-left:9px;
+        padding-top: 9px;
+        border-color:#0277bd;
+        resize:none;
+        &:focus{
+            outline:none;
+        }
+    }
+    input[type=submit]{
+        margin-top:19px;
+        font-size:20px;
+        padding:6px 10px;
+        background-color: #0277bd;
+        border-radius:25px;
+        color:rgb(255, 255, 255);
+        cursor:pointer;
+        &:hover{
+            transform:scale(1.1,1.1);
+        }
+    }
+}
+
+//ESTILIZANDO CALENDÀRIO
+.title-mesano{
+    text-align: center;
+    padding:0px 20px;
+    i{
+        margin: 0 25px;
+        cursor:pointer;
+        font-size:23px;
+        &:hover{
+            transform:scale(1.3,1.3);
+        }
+    }
+}
+.calendario-table td{
+    border:1px solid #ccc;
+    text-align:center;
+    cursor:pointer;
+}
+.hover-calendario{
+    background-color:rgb(230, 219, 219);
+}
+td.day-selected{
+    background-color:rgb(201, 201, 201);
+}
+.card-title{
+    background-color: #b8e1f8;
+    width:100%;
+    padding:4px 10px;
+}
+.box-tarefas{
+    display:flex;
+    flex-wrap:wrap;
+
+    .box-tarefas-single{
+        background-color:rgb(245, 208, 87);
+        width:33.3%;
+        border:4px solid white;
+        color:white;
+        font-size:23px;
+        padding-left:9px;
+        cursor:pointer;
+    }
+}
 
 @media screen and (max-width:1300px ){
     .w33{
@@ -707,6 +826,25 @@ div.boxes{
     }
     .w40{
         width:100% !important;
+    }
+}
+@media screen and (max-width:1000px){
+    .img-produto-empreendimento{
+        max-width:400px;
+        display: block;
+        margin:0 auto;
+    }
+    .info-item{
+        flex-wrap:wrap;
+        .row1{
+            width:100%;
+            padding:8px 5px;
+            min-width:0px;            
+        }
+        .row2{
+            width:100%;
+            padding:8px 5px;
+        }
     }
 }
 
@@ -870,9 +1008,7 @@ div.boxes{
                             transform: scale(1.1,1.1);
                         }
                     }
-    
-                    .edit{background-color: #f8e803;border:2px solid #ada30d;};
-                    .delete{background-color: #ff8181;border:2px solid #e43636;};
+
                 }
             }
         }

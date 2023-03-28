@@ -2,6 +2,7 @@
     if(isset($_GET['loggout'])){
         Painel::loggout();
     }
+    
 ?>
 <?php ob_start(); ?>
 <!DOCTYPE html>
@@ -16,6 +17,7 @@
     <link rel="stylesheet" href="<?php echo INCLUDE_PATH; ?>fontawesome-free-6.1.1-web/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/zebra_datepicker@latest/dist/css/default/zebra_datepicker.min.css">
     <link rel="stylesheet" href="<?php echo INCLUDE_PATH_PAINEL; ?>css/style.css">
+    <link rel="stylesheet" href="<?php echo INCLUDE_PATH_PAINEL; ?>css/jquery-ui.min.css">
     <title>Painel de Controle</title>
 </head>
 <body>
@@ -75,6 +77,11 @@
             <a <?php selecionadoMenu('cadastrar-produtos'); ?> href="<?php echo INCLUDE_PATH_PAINEL; ?>cadastrar-produtos">Cadastrar Produtos</a>
             <a <?php selecionadoMenu('visualizar-produtos'); ?> href="<?php echo INCLUDE_PATH_PAINEL; ?>visualizar-produtos">Visualizar Produtos</a>
 
+            <h2>Gestão de imóveis</h2>
+            <a <?php selecionadoMenu('cadastrar-empreeedimento'); ?> href="<?php echo INCLUDE_PATH_PAINEL; ?>cadastrar-empreendimento">Cadastrar Empreendimento</a>
+            <a <?php selecionadoMenu('listar-empreeedimentos'); ?> href="<?php echo INCLUDE_PATH_PAINEL; ?>listar-empreendimentos">Listar Empreendimentos</a>
+            
+
             <h2>Configuração Geral</h2>
             <a <?php selecionadoMenu('editar-site'); ?>  href="<?php echo INCLUDE_PATH_PAINEL; ?>editar-site">Editar Site</a>
         </div><!--items-menu-->
@@ -91,26 +98,45 @@
                      <a style="margin-left:16px;color:#010235" href="<?php echo INCLUDE_PATH_PAINEL; ?>"><i class="fa fa-home"></i></a><a style="margin-left:5px;color:#010235;text-decoration:none;<?php if(@$_GET['url'] == ''){?> border-bottom:3px solid #0a5989;<?php }?> " href="<?php echo INCLUDE_PATH_PAINEL; ?>">Pagina inicial</a>
                 </div>
                 <div class="loggout">
-                    <a style="padding-right:5px;color:#010235;text-decoration:none;" href="<?php echo INCLUDE_PATH_PAINEL; ?>?loggout">Sair</a>
+                    <a style="padding-right:1px;color:#010235;text-decoration:none;" href="<?php echo INCLUDE_PATH_PAINEL; ?>?loggout">Sair</a>
                     <a href="<?php echo INCLUDE_PATH_PAINEL; ?>?loggout"><i class="fa-solid fa-person-walking-dashed-line-arrow-right"></i></a>
                 </div><!--loggout-->
+
+                <div class="loggout" style="margin-right:49px;">
+                    <a style="margin-left:0px;color:#010235;text-decoration:none;<?php if(@$_GET['url'] == 'chat-online'){?> border-bottom:3px solid #0a5989;<?php }?> " href="<?php echo INCLUDE_PATH_PAINEL; ?>chat-online">Chat Online</a>
+                    <a style="margin-left:16px;color:#010235" href="<?php echo INCLUDE_PATH_PAINEL; ?>chat-online"><i class="fa-solid fa-comments"></i></a>
+                </div><!--chat-online-->
+
+                <div class="loggout" style="margin-right:49px;">
+                    <a style="margin-left:0px;color:#010235;text-decoration:none;<?php if(@$_GET['url'] == 'calendario'){?> border-bottom:3px solid #0a5989;<?php }?> " href="<?php echo INCLUDE_PATH_PAINEL; ?>calendario">Calendário</a>
+                    <a style="margin-left:16px;color:#010235" href="<?php echo INCLUDE_PATH_PAINEL; ?>calendario"><i class="fa-solid fa-calendar"></i></a>
+                </div><!--chat-online-->
             </div>
             <div class="clear"></div>
         </header>
         <div class="content">
-            <?php Painel::carregarPagina(); ?>
+            <?php
+            
+            Painel::carregarPagina(); 
+            
+            ?>
         </div><!--content-->
         <div class="clear"></div>
     </div><!--container-->
-</div><!--topo-painel-->    
+</div><!--topo-painel-->
 
+<!--FUNCOES DO MAIN-->
 <script src="<?php echo INCLUDE_PATH; ?>js/jquery.js"></script>
 <script src="<?php echo INCLUDE_PATH; ?>js/jquery-migrate-1.4.1.min.js" type="text/javascript"></script>
 <script src="<?php echo INCLUDE_PATH; ?>js/jquery-migrate-3.3.2.min.js" type="text/javascript"></script>
 <script src="https://cdn.jsdelivr.net/npm/zebra_datepicker@1.9.13/dist/zebra_datepicker.min.js"></script>
 <script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/jquery.mask.js" type="text/javascript"></script>
+<script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/jquery.form.min.js"></script>
 <script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/main.js"></script>
 <script src="<?php echo INCLUDE_PATH; ?>js/constants.js"></script>
+
+<!--FUNCOES DO TYNIMCE-->
+<?php if(@$_GET['url'] == 'cadastrar-noticias' || @$_GET['url'] == 'editar-noticia') { ?>
 <script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/tinymce/tinymce.min.js"></script>
 <script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/tinymce/icons/default/icons.min.js"></script>
 <script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/tinymce/plugins"></script>
@@ -123,15 +149,38 @@
       
     });
 </script>
-<script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/jquery.form.min.js"></script>
+<?php } ?>
+
+
+
+<?php if(@$_GET['url'] == 'cadastrar-clientes' || @$_GET['url'] == 'gerenciar-clientes' || @$_GET['url'] == 'editar-cliente'
+        || @$_GET['url'] == 'visualizar-produtos' || @$_GET['url'] == 'editar-produto' || @$_GET['url'] == 'cadastrar-produtos' 
+        || @$_GET['url'] == 'cadastrar-empreendimento' || @$_GET['url'] == 'editar-empreendimento' || @$_GET['url'] == 'editar-imovel'){ ?>
 <script src="<?php echo INCLUDE_PATH_PAINEL; ?>js/helperMask.js"></script>
+<?php } ?>
+
+<?php Painel::loadJS(array('ajax.js'),'cadastrar-clientes'); ?>
 <?php Painel::loadJS(array('ajax.js'),'gerenciar-clientes'); ?>
 <?php Painel::loadJS(array('ajax.js'),'editar-cliente'); ?>
-<?php Painel::loadJS(array('ajax.js'),'cadastrar-clientes'); ?>
-<?php Painel::loadJS(array('ajax.js'),'visualizar-produtos'); ?>
-<?php Painel::loadJS(array('ajax.js'),'editar-produto'); ?>
 <?php Painel::loadJS(array('financeiroCliente.js'),'editar-cliente'); ?>
 <?php Painel::loadJS(array('maskMoney.js'),'editar-cliente'); ?>
+<?php Painel::loadJS(array('ajax.js'),'visualizar-produtos'); ?>
+<?php Painel::loadJS(array('ajax.js'),'editar-produto'); ?>
+<!--FUNCOES DO SISTEMA DE IMÒVEIS-->
+<?php Painel::loadJS(array('financeiroCliente.js'),'cadastrar-empreendimento'); ?>
+<?php Painel::loadJS(array('maskMoney.js'),'cadastrar-empreendimento'); ?>
+<?php Painel::loadJS(array('ajax.js'),'listar-empreendimentos'); ?>
+<?php Painel::loadJS(array('jquery-ui.min.js'),'listar-empreendimentos'); ?>
+<?php Painel::loadJS(array('empreendimentos.js'),'listar-empreendimentos'); ?>
+<?php Painel::loadJS(array('ajax.js'),'editar-imovel'); ?>
+
+<!--FUNCOES DO SISTEMA DE IMÒVEIS-->
+<?php Painel::loadJS(array('chat.js'),'chat-online'); ?>
+
+<!--FUNCOES DO SISTEMA DE IMÒVEIS-->
+<?php Painel::loadJS(array('calendario.js'),'calendario'); ?>
+
+
 
 </body>
 </html>

@@ -23,6 +23,10 @@ body ::-webkit-scrollbar-thumb {
   background: #336a8a;
   border-radius: 10px;
 }
+html input:focus,
+body input:focus {
+  outline: 0;
+}
 .pago {
   background-color: #6df089;
   border: 2px solid #108340;
@@ -39,14 +43,29 @@ body ::-webkit-scrollbar-thumb {
   background-color: #f8e803;
   border: 2px solid #ada30d;
   min-width: 57px;
+  color: black;
 }
 .delete {
   background-color: #ff8181;
   border: 2px solid #e43636;
+  color: #851212;
+  border-radius: 6px;
+}
+.normal {
+  background-color: #47beec;
+  border: 2px solid #36a1c2;
+  color: #090a0a !important;
+  border-radius: 6px;
 }
 .btn-order {
   background-color: #8ab3ff;
   border: 2px solid #4668a8;
+}
+a.btn {
+  display: inline-block;
+}
+a.btn:hover {
+  transform: scale(1.1, 1.1);
 }
 .gerar-pdf {
   margin: 15px 0px;
@@ -66,6 +85,13 @@ body ::-webkit-scrollbar-thumb {
   height: 170px;
   width: 100%;
   max-width: 235px;
+  margin: 0 auto;
+}
+.img-produto-empreendimento {
+  background-size: 100% 100%;
+  background-position: center;
+  height: 470px;
+  width: 100%;
   margin: 0 auto;
 }
 .erro-box {
@@ -465,31 +491,6 @@ div.menu .menu-wraper .items-menu a:hover {
 .listar-depoimentos table tr td a.btn:hover {
   transform: scale(1.1, 1.1);
 }
-.listar-depoimentos table tr td .pago {
-  background-color: #6df089;
-  border: 2px solid #108340;
-  min-width: 57px;
-  color: #0d3b0b !important;
-}
-.listar-depoimentos table tr td .contato {
-  background-color: #2cd3cb;
-  border: 2px solid #058f8f;
-  min-width: 57px;
-  color: #0d2e8a;
-}
-.listar-depoimentos table tr td .edit {
-  background-color: #f8e803;
-  border: 2px solid #ada30d;
-  min-width: 57px;
-}
-.listar-depoimentos table tr td .delete {
-  background-color: #ff8181;
-  border: 2px solid #e43636;
-}
-.listar-depoimentos table tr td .btn-order {
-  background-color: #8ab3ff;
-  border: 2px solid #4668a8;
-}
 .listar-depoimentos .paginacao {
   text-align: center;
   margin: 0 auto;
@@ -614,17 +615,6 @@ div.boxes .box-single-wraper .box-single .body-box .group-btn a {
   padding: 2px 5px;
   border-radius: 7px;
 }
-div.boxes .box-single-wraper .box-single .body-box .group-btn .edit {
-  background-color: #f8e803;
-  border: 2px solid #ada30d;
-  min-width: 57px;
-  color: #5f5f0c;
-}
-div.boxes .box-single-wraper .box-single .body-box .group-btn .delete {
-  background-color: #ff8181;
-  border: 2px solid #e43636;
-  color: #863030;
-}
 div.boxes .box-single-wraper .box-single .body-box .group-btn form.form-quantidade {
   margin: 0 !important;
   padding-bottom: 5px;
@@ -638,35 +628,107 @@ div.boxes .box-single-wraper .box-single .body-box .group-btn form.form-quantida
   display: inline-block;
   padding: 3px 8px;
 }
-.pago {
-  background-color: #6df089;
-  border: 2px solid #108340;
-  min-width: 57px;
-  color: #0d3b0b !important;
+.info-item {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding: 14px 0;
 }
-.contato {
-  background-color: #2cd3cb;
-  border: 2px solid #058f8f;
-  min-width: 57px;
-  color: #0d2e8a;
+.info-item .row1 {
+  width: 30%;
+  padding: 8px 5px;
+  min-width: 373px;
 }
-.edit {
-  background-color: #f8e803;
-  border: 2px solid #ada30d;
-  min-width: 57px;
+.info-item .row2 {
+  width: 70%;
+  padding: 8px 5px;
 }
-.delete {
-  background-color: #ff8181;
-  border: 2px solid #e43636;
-  color: #851212;
-  border-radius: 6px;
+.box-chat-online {
+  width: 100%;
+  height: 500px;
+  padding: 0px 0px;
+  overflow-y: scroll;
+  background-color: #c8e8fa;
 }
-.delete:hover {
+.box-chat-online .mensagem-chat {
+  border: 2px solid #90adad;
+  padding: 20px;
+}
+.box-chat-online .mensagem-chat span {
+  padding: 5px 12px;
+  background-color: #0277bd;
+  border-radius: 15px;
+  color: white;
+}
+.box-chat-online .mensagem-chat p {
+  margin-top: 9px;
+}
+.form-chat {
+  width: 100%;
+}
+.form-chat textarea {
+  width: 100%;
+  height: 90px;
+  padding-left: 9px;
+  padding-top: 9px;
+  border-color: #0277bd;
+  resize: none;
+}
+.form-chat textarea:focus {
+  outline: none;
+}
+.form-chat input[type=submit] {
+  margin-top: 19px;
+  font-size: 20px;
+  padding: 6px 10px;
+  background-color: #0277bd;
+  border-radius: 25px;
+  color: #ffffff;
+  cursor: pointer;
+}
+.form-chat input[type=submit]:hover {
   transform: scale(1.1, 1.1);
 }
-.btn-order {
-  background-color: #8ab3ff;
-  border: 2px solid #4668a8;
+.title-mesano {
+  text-align: center;
+  padding: 0px 20px;
+}
+.title-mesano i {
+  margin: 0 25px;
+  cursor: pointer;
+  font-size: 23px;
+}
+.title-mesano i:hover {
+  transform: scale(1.3, 1.3);
+}
+.calendario-table td {
+  border: 1px solid #ccc;
+  text-align: center;
+  cursor: pointer;
+}
+.hover-calendario {
+  background-color: #e6dbdb;
+}
+td.day-selected {
+  background-color: #c9c9c9;
+}
+.card-title {
+  background-color: #b8e1f8;
+  width: 100%;
+  padding: 4px 10px;
+}
+.box-tarefas {
+  display: flex;
+  flex-wrap: wrap;
+}
+.box-tarefas .box-tarefas-single {
+  background-color: #f5d057;
+  width: 33.3%;
+  border: 4px solid white;
+  color: white;
+  font-size: 23px;
+  padding-left: 9px;
+  cursor: pointer;
 }
 @media screen and (max-width: 1300px) {
   .w33 {
@@ -677,6 +739,25 @@ div.boxes .box-single-wraper .box-single .body-box .group-btn form.form-quantida
   }
   .w40 {
     width: 100% !important;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .img-produto-empreendimento {
+    max-width: 400px;
+    display: block;
+    margin: 0 auto;
+  }
+  .info-item {
+    flex-wrap: wrap;
+  }
+  .info-item .row1 {
+    width: 100%;
+    padding: 8px 5px;
+    min-width: 0px;
+  }
+  .info-item .row2 {
+    width: 100%;
+    padding: 8px 5px;
   }
 }
 @media screen and (min-width: 770px) {
@@ -804,13 +885,5 @@ div.boxes .box-single-wraper .box-single .body-box .group-btn form.form-quantida
   }
   .listar-depoimentos table tr td a.btn:hover {
     transform: scale(1.1, 1.1);
-  }
-  .listar-depoimentos table tr td .edit {
-    background-color: #f8e803;
-    border: 2px solid #ada30d;
-  }
-  .listar-depoimentos table tr td .delete {
-    background-color: #ff8181;
-    border: 2px solid #e43636;
   }
 }

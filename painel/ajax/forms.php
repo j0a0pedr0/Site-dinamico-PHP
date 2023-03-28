@@ -112,6 +112,50 @@
         $item_name = $_POST['imagem'];
         @unlink(BASE_DIR_PAINEL.'/uploads/'.$item_name);
         Mysql::Conectar()->exec("DELETE FROM `tb_admin.estoque_imagens` WHERE id=$itemId");
+    }else if(isset($_POST['tipo_acao']) && $_POST['tipo_acao'] == 'delete-empreendimento'){
+        $itemId = $_POST['id'];
+        $nameImagem = $_POST['imagem'];
+        echo $nameImagem;
+        @unlink(BASE_DIR_PAINEL.'/uploads/'.$nameImagem);
+        $imoveis = Mysql::Conectar()->prepare("SELECT * FROM `tb_admin.imoveis` WHERE empreend_id=?");
+        $imoveis->execute(array($itemId));
+        $imoveis = $imoveis->fetchAll();
+ 
+        foreach($imoveis as $key => $value){
+            $imagens = Mysql::Conectar()->prepare("SELECT * FROM `tb_admin.imoveis_imagens` WHERE imovel_id=?");
+            $imagens->execute(array($value['id']));
+            $imagens = $imagens->fetchAll();
+            foreach($imagens as $key2 => $value2){
+                @unlink(BASE_DIR_PAINEL.'/uploads/'.$value2['imagem']);
+            }
+            Mysql::Conectar()->exec("DELETE FROM `tb_admin.imoveis_imagens` WHERE imovel_id=$value[id]");
+        }
+        Mysql::Conectar()->exec("DELETE FROM `tb_admin.imoveis` WHERE empreend_id=$itemId");
+        $delete = Mysql::Conectar()->prepare("DELETE FROM `tb_admin.empreendimentos` WHERE id = ?");
+        $delete->execute(array($itemId));
+   
+    }else if(isset($_POST['tipo_acao']) && $_POST['tipo_acao'] == 'order_id'){
+            $ids = $_POST['item'];
+            $i = 1;
+            foreach($ids as $key => $value){
+                Mysql::Conectar()->exec("UPDATE `tb_admin.empreendimentos` SET order_id = $i WHERE id = $value");
+                $i++;
+            }
+    }else if(isset($_POST['tipo_acao']) && $_POST['tipo_acao'] == 'delete-imagem-imovel'){
+        $itemId = $_POST['id'];
+        $item_name = $_POST['imagem'];
+        @unlink(BASE_DIR_PAINEL.'/uploads/'.$item_name);
+        Mysql::Conectar()->exec("DELETE FROM `tb_admin.imoveis_imagens` WHERE id = $itemId");
+    }else if(isset($_POST['tipo_acao']) && $_POST['tipo_acao'] == 'delete-imovel-single'){
+        $itemId = $_POST['id'];
+        $sql = Mysql::Conectar()->prepare("SELECT imagem FROM `tb_admin.imoveis_imagens` WHERE imovel_id=?");
+        $sql->execute(array($itemId));
+        $item_name = $sql->fetchAll();
+        foreach($item_name as $key => $value){
+            @unlink(BASE_DIR_PAINEL.'/uploads/'.$value['imagem']);
+        }
+        Mysql::Conectar()->exec("DELETE FROM `tb_admin.imoveis_imagens` WHERE imovel_id = $itemId");
+        Mysql::Conectar()->exec("DELETE FROM `tb_admin.imoveis` WHERE id =$itemId ");
     }
 
     die(json_encode($data));

@@ -3,6 +3,16 @@
     class Painel
     {
 
+
+        public static function formatarMoeda($valor){
+            $valor = str_replace('.','',$valor);
+            $valor = str_replace(',','.',$valor);
+            return $valor;
+        }
+        public static function convertMoney($valor){
+            return number_format($valor,2, ',', '.');
+        }
+
         public static $cargos = [
             '0' => 'Normal',
             '1' => 'Sub Administrador',
@@ -11,6 +21,7 @@
 
         public static function loadJS($files,$page){
             $url = explode('/',@$_GET['url'])[0];
+            
             if($page == $url){
                 foreach($files as $key => $value){
                     echo '<script src="'.INCLUDE_PATH_PAINEL.'js/'.$value.'"></script>';
@@ -48,8 +59,14 @@
                 if(file_exists('pages/'.$url[0].'.php')){
                     include('pages/'.$url[0].'.php');
                 }else{
-                    //Pagina nao existe!
-                    header('Location: '.INCLUDE_PATH_PAINEL);
+                    //Pagina nao existe!               
+                    if(Router::get('visualizar-empreendimento/?',function($par){
+                        include('views/visualizar-empreendimento.php');
+                    })){   
+                    }else if(Router::post('visualizar-empreendimento/?',function($par){
+                        include('views/visualizar-empreendimento.php');
+                    })){
+                    }
                 }
                
             }else{

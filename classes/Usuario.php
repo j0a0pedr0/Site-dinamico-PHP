@@ -19,6 +19,7 @@
             }else{
                 return false;
             }
+            
         }
 
         public static function cadastrarUsuario($user,$senha,$imagem,$nome,$cargo){

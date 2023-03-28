@@ -95,8 +95,8 @@
                 $status = 0;
                 $interva = (60*60*24*$intervalo);
                 $valor = floatval($valor)/$numero_parcelas;
-                $valor = number_format($valor,2,',','');
-
+                $valor = number_format($valor,2,'.','');
+                
                 if(strtotime($vencimentoOriginal) < time()){
                     Painel::alert('erro','erro, Você selecionou uma data negativa!');
                 }else{
@@ -161,7 +161,6 @@
                 <td>Cliente</td>
                 <td>Valor</td>
                 <td>Vencimento</td>
-                <td>Enviar e-mail</td>
                 <td>Marcar como pago</td>
             </tr>   
             
@@ -184,9 +183,8 @@
             <tr <?php echo $style; ?> >
                 <td><?php echo $value['nome']; ?></td>
                 <td><?php echo $clienteNome; ?></td>
-                <td><?php echo $value['valor']; ?></td>
+                <td>R$<?php echo Painel::convertMoney((float)$value['valor']); ?></td>
                 <td><?php echo date('d/m/Y',strtotime($value['vencimento'])); ?></td>
-                <td><a class="btn contato" href=""><i class="fa-solid fa-paper-plane"></i> E-mail</a></td>
                 <td><a class="btn pago" href="<?php echo INCLUDE_PATH_PAINEL; ?>editar-cliente?id=<?php echo $id ?>&pago=<?php echo $value['id']; ?>"><i class="fa-solid fa-circle-check"></i> Pago</a></td>
             </tr>   
 
@@ -222,7 +220,7 @@
             <tr style="background-color:rgba(173, 238, 208, 0.933);font-weight:550;">
                 <td><?php echo $value['nome']; ?></td>
                 <td><?php echo $clienteNome; ?></td>
-                <td><?php echo $value['valor']; ?></td>
+                <td>R$<?php echo Painel::convertMoney((float)$value['valor']); ?></td>
                 <td><?php echo date('d/m/Y',strtotime($value['vencimento'])); ?></td>
                 <td><?php echo date('d/m/Y -- H:i',strtotime($value['data_pagamento'])); ?></td>
             </tr>   
